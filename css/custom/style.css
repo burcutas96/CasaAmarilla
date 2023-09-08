@@ -11,10 +11,11 @@ html{
 
 :root{
     --night: #19191a;
-    --space: #212529;
+    --space: #333333;
+    --black: #000000;
     --vintage: #515052;
     --halloween: #DFA974;
-    --shades: #bfbcc2;
+    --shades: #999999;
     --white: #FFFFFF;
     --red: #e34c26;
     --yellow: #178600;
@@ -72,6 +73,65 @@ a{
     cursor: pointer;
 }
 
+.modal{
+    background-color: var(--black);
+}
+
+.modal .modal-dialog{
+    margin-top: 4rem;
+}
+
+.modal .modal-content{
+    background-color: transparent;
+}
+
+.modal .modal-header{
+    margin: 0 auto;
+    border: 0;
+}
+
+.modal button{
+    border: 0;
+    background-color: transparent;
+    background-color: var(--space);
+    border-radius: 50%;
+}
+
+.modal .fa-xmark{
+    font-size: 2.5rem;
+    color: var(--white);
+    padding: 1.5rem 1.7rem;
+}
+
+.modal .modal-body{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-body input{
+    width: 60%;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--space);
+    color: var(--shades);  
+    margin: auto 0; 
+    font-size: 3.9rem;
+    padding-bottom: .5rem;
+    padding-left: .2rem;
+    font-weight: 500;
+}
+
+.modal .modal-body input::placeholder{
+    font-size: 3.9rem;
+}
+
+.modal .modal-body input:focus-visible{
+    outline: none;
+}
+
+
 @media (max-width: 991.9px) {
     .offcanvas-header{
         justify-content: flex-end !important;
@@ -80,7 +140,6 @@ a{
     .offcanvas-header .btn-close{
         font-size: 1.5rem !important;
         display: inline-block;
-        color: red !important;
         padding: 1.8rem 5rem 1.8rem 0 !important;
         box-shadow: none !important;
         opacity: .75;

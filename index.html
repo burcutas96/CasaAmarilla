@@ -28,16 +28,7 @@
                 <div class="offcanvas offcanvas-start" id="navbarNav">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                        <div class="modal" id="search-modal" tabindex="-1" aria-labelledby="Search" aria-hidden="true">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="text" id="search-input" placeholder="Search here.....">
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="offcanvas-body">
@@ -48,15 +39,29 @@
                             <li class="nav-item"><a href="#pages" class="nav-link btn-close-canvas">Pages</a></li>
                             <li class="nav-item"><a href="#news" class="nav-link btn-close-canvas">News</a></li>
                             <li class="nav-item"><a href="#contact" class="nav-link btn-close-canvas">Contact</a></li>
-                            <li class="nav-item"><i class="nav-link bi bi-search"></i></li>
+                            <li class="nav-item"><i class="nav-link bi bi-search" data-bs-toggle="modal" data-bs-target="#searchModal"></i></li>
                         </ul>
+                    </div>
+                    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" placeholder="Search here.....">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
     
 
-
+    <script src="https://kit.fontawesome.com/437bb43714.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="js/custom/script.js"></script>
 </body>
