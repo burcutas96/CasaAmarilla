@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: "Cabin", sans-serif;
+}
+
+:root{
+    --night: #19191a;
+    --space: #212529;
+    --vintage: #515052;
+    --halloween: #DFA974;
+    --shades: #bfbcc2;
+    --white: #FFFFFF;
+    --red: #e34c26;
+    --yellow: #178600;
+    --darkolive: #556b2f;
+    --lightolive: #718d42;
+}
+
+a{
+    color: var(--white);    
+    text-decoration: none !important;
+}
+
+#mainNavbar{
+    padding: 2rem .6rem;
+}
+
+.navbar-toggler{
+    border: none !important;
+}
+
+.offcanvas{
+    width: 350px !important; 
+    transition: .7s !important;
+}
+
+.navbar-toggler:focus{
+    box-shadow: var(--white) !important;
+}
+
+.navbar-toggler .bi-list{
+    font-size: 3.2rem;
+}
+
+.navbar-nav .nav-link{
+    color: var(--night) !important; 
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0 1.9rem !important;
+    border-bottom: 3px solid var(--white);
+}
+
+.navbar-nav .nav-item:first-child .nav-link{
+    border-bottom: 3px solid var(--halloween);
+}
+
+.navbar-nav .nav-link:hover{
+    border-bottom: 3px solid var(--halloween);
+}
+
+.navbar-nav .nav-item:last-child .nav-link{
+    border-bottom: 3px solid var(--white) !important;
+}
+
+.navbar-nav .bi-search{
+    cursor: pointer;
+}
+
+@media (max-width: 991.9px) {
+    .offcanvas-header{
+        justify-content: flex-end !important;
+    }
+
+    .offcanvas-header .btn-close{
+        font-size: 1.5rem !important;
+        display: inline-block;
+        color: red !important;
+        padding: 1.8rem 5rem 1.8rem 0 !important;
+        box-shadow: none !important;
+        opacity: .75;
+    }
+
+    .navbar-nav .nav-item {
+        flex: 1;
+        width: 80%;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0; 
+    }
+
+    .navbar-nav .nav-item:last-child{
+        border-bottom: none;
+    }
+    
+    .navbar-nav .nav-item:last-child{
+        order: -1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar-nav .bi-search{
+        font-size: 1.8rem !important;
+    }
+
+    .navbar-nav .nav-link{
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 0rem .8rem !important;
+        transition: all .3s;
+        border-bottom: 3px solid var(--white) !important;
+    }
+
+    .navbar-nav .nav-link:hover{
+        color: var(--halloween) !important;
+    }
+
+    .navbar-nav .nav-item:last-child .nav-link:hover{
+        color: var(--night) !important;
+    }
+
+}
+
+@media (max-width: 578px){
+    .offcanvas{
+        width: 300px !important; 
+        transition: .7s !important;
+    }
+}
+
+
