@@ -15,7 +15,7 @@ html{
     --black: #000000;
     --vintage: #999999;
     --halloween: #DFA974;
-    --shades: #999999;
+    --shades: #9f9f9f;
     --white: #FFFFFF;
     --red: #e34c26;
     --yellow: #178600;
@@ -38,7 +38,7 @@ a{
 
 .offcanvas{
     width: 350px !important;
-    transition: .7s !important; 
+    transition: .5s !important; 
 }
 
 .navbar-toggler:focus{
@@ -115,8 +115,12 @@ a{
     font-size: 3.7rem;
     background-color: transparent;
     border: none;
-    color: var(--vintage);
-    border-bottom: 2px solid var(--space);
+    color: var(--shades);
+    border-bottom: 2px solid var(--shades);
+}
+
+.search-model #search-input::placeholder{
+    color: var(--shades);
 }
 
 .search-model #search-input:focus-visible{
