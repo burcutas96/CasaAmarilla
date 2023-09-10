@@ -38,7 +38,7 @@ a{
 
 .offcanvas{
     width: 350px !important;
-    transition: .5s !important; 
+    transition: .4s !important; 
 }
 
 .navbar-toggler:focus{
@@ -54,6 +54,7 @@ a{
     font-size: 1.6rem;
     font-weight: 500;
     margin: 0 1.9rem !important;
+    transition: all .4s;
     border-bottom: 3px solid var(--white);
 }
 
@@ -61,7 +62,7 @@ a{
     border-bottom: 3px solid var(--halloween);
 }
 
-.navbar-nav .nav-link:hover{
+.navbar-nav .nav-item:hover .nav-link{
     border-bottom: 3px solid var(--halloween);
 }
 
@@ -232,3 +233,60 @@ a{
         font-size: 2.5rem;
     }
 }
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    font-size: initial !important;
+    font-family: "Cabin", sans-serif;
+    color: var(--night);
+    list-style: none;
+    padding: 1rem .5rem !important;
+    background-color: var(--white);
+    border: none !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 1rem 1.5rem !important;
+    font-weight: 400;
+    color: var(--night);
+    text-align: inherit;
+    transition: all .4s;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: var(--halloween) !important;
+    background-color: transparent !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: slideDown 0.4s ease-in-out; /* Alt menüyü yukarıdan aşağıya doğru getirir */
+}
+  
+@keyframes slideDown {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  

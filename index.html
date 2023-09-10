@@ -15,47 +15,57 @@
 
 
     <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-white" id="mainNavbar">
-            <div class="container-md">
-                <a class="navbar-brand" href="#home">
-                    <img src="/images/logo.png" alt="logo">
-                </a>
+    <nav class="navbar navbar-expand-lg bg-white" id="mainNavbar">
+        <div class="container-md">
+            <a class="navbar-brand" href="#home">
+                <img src="/images/logo.png" alt="logo">
+            </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation button">
-                    <i class="bi bi-list"></i>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation button">
+                <i class="bi bi-list"></i>
+            </button>
 
-                <div class="offcanvas offcanvas-start" id="navbarNav">
-                    <div class="offcanvas-header">
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                        
-                    </div>
+            <div class="offcanvas offcanvas-start" id="navbarNav">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
 
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav ms-auto align-items-center">
-                            <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
-                            <li class="nav-item"><a href="#rooms" class="nav-link btn-close-canvas">Rooms</a></li>
-                            <li class="nav-item"><a href="#aboutus" class="nav-link btn-close-canvas">About Us</a></li>
-                            <li class="nav-item"><a href="#pages" class="nav-link btn-close-canvas">Pages</a></li>
-                            <li class="nav-item"><a href="#news" class="nav-link btn-close-canvas">News</a></li>
-                            <li class="nav-item"><a href="#contact" class="nav-link btn-close-canvas">Contact</a></li>
-                            <li class="nav-item"><i class="nav-link bi bi-search"></i></li>
-                        </ul>
-                    </div>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
+                        <li class="nav-item"><a href="#rooms" class="nav-link btn-close-canvas">Rooms</a></li>
+                        <li class="nav-item"><a href="#aboutus" class="nav-link btn-close-canvas">About Us</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Pages
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                <li><a class="dropdown-item" href="#roomdetails">Room Details</a></li>
+                                <li><a class="dropdown-item" href="#blogdetails">Blog Details</a></li>
+                                <li><a class="dropdown-item" href="#familyroom">Family Room</a></li>
+                                <li><a class="dropdown-item" href="#premiumroom">Premium Room</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="#news" class="nav-link btn-close-canvas">News</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link btn-close-canvas">Contact</a></li>
+                        <li class="nav-item"><i class="nav-link bi bi-search"></i></li>
+                    </ul>
                 </div>
             </div>
-        </nav>
-
-        <div class="search-model">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div class="search-close-switch"><i class="fa-solid fa-xmark"></i></div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here.....">
-                </form>
-            </div>
         </div>
-    
+    </nav>
+
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="fa-solid fa-xmark"></i></div>
+            <form class="search-model-form">
+                <input type="search" id="search-input" placeholder="Search here....." autofocus="true">
+            </form>
+        </div>
+    </div>
 
     <script src="https://kit.fontawesome.com/437bb43714.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>

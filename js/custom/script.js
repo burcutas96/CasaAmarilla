@@ -15,3 +15,13 @@ $(document).ready(function () {
 });
 
 
+const dropdownItem = document.querySelector('.dropdown-menu');
+const navLink = document.querySelector('.nav-item.dropdown .nav-link');
+  
+dropdownItem.addEventListener('mouseover', function() {
+    navLink.style.borderBottom = '3px solid var(--halloween)';
+});
+
+dropdownItem.addEventListener('mouseout', function() {
+    navLink.style.borderBottom = '';
+});
