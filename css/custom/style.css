@@ -29,7 +29,7 @@ a{
 }
 
 #mainNavbar{
-    padding: 2rem .6rem;
+    height: 77px;
 }
 
 .navbar-toggler{
@@ -58,6 +58,10 @@ a{
     border-bottom: 3px solid var(--white);
 }
 
+.navbar-nav .nav-item{
+    padding: 2rem .6rem;
+}
+
 .navbar-nav .nav-item:first-child .nav-link{
     border-bottom: 3px solid var(--halloween);
 }
@@ -72,6 +76,39 @@ a{
 
 .navbar-nav .bi-search{
     cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 77px;
+    font-size: initial !important;
+    font-family: "Cabin", sans-serif;
+    color: var(--night);
+    list-style: none;
+    padding: 1rem .5rem !important;
+    background-color: var(--white);
+    border: none !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 1rem 1.5rem !important;
+    font-weight: 400;
+    color: var(--night);
+    text-align: inherit;
+    transition: all .4s;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: var(--halloween) !important;
+    background-color: transparent !important;
 }
 
 .search-model {
@@ -129,6 +166,37 @@ a{
 }
 
 
+@media (min-width: 991.9px) {
+    .dropdown:hover .dropdown-menu {
+        display: block !important;
+        animation: slideDown 0.4s ease-in-out;
+    }
+
+    .dropdown-toggle.show .dropdown-menu{
+        display: none !important;
+    }
+
+    .dropdown-menu[data-bs-popper]{
+        margin: 0 !important;
+    }
+
+    @keyframes slideDown {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+    
+    .dropdown .right-icon,
+    .dropdown .down-icon{
+        display: none !important;
+    }
+}
+
 @media (max-width: 991.9px) {
     .offcanvas-header{
         justify-content: flex-end !important;
@@ -179,6 +247,31 @@ a{
         color: var(--night) !important;
     }
 
+    .dropdown-toggle{
+        position: relative;
+    }
+
+    .dropdown .right-icon,
+    .dropdown .down-icon{
+        position: absolute; 
+        top: 50%;
+        left: 45px;
+        font-size: 1.2rem;
+        transform: translateY(-50%);
+    }
+
+    .dropdown .right-icon{
+        display: block;
+    }
+
+    .dropdown .down-icon{
+        display: none;
+    }
+
+    .dropdown-toggle:hover + .right-icon,
+    .dropdown-toggle:hover + .down-icon{
+        color: var(--halloween) !important;
+    }
 }
 
 @media (max-width: 767px){
@@ -234,53 +327,7 @@ a{
     }
 }
 
-.dropdown-toggle::after {
-    display: none !important;
-}
 
-.dropdown-menu {
-    position: absolute;
-    display: none;
-    font-size: initial !important;
-    font-family: "Cabin", sans-serif;
-    color: var(--night);
-    list-style: none;
-    padding: 1rem .5rem !important;
-    background-color: var(--white);
-    border: none !important;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
-}
-
-.dropdown-item {
-    display: block;
-    padding: 1rem 1.5rem !important;
-    font-weight: 400;
-    color: var(--night);
-    text-align: inherit;
-    transition: all .4s;
-}
-
-.dropdown-item:focus,
-.dropdown-item:hover {
-    color: var(--halloween) !important;
-    background-color: transparent !important;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    animation: slideDown 0.4s ease-in-out; /* Alt menüyü yukarıdan aşağıya doğru getirir */
-}
-  
-@keyframes slideDown {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
   
   
   

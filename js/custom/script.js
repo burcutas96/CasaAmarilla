@@ -1,5 +1,8 @@
 'use strict';
 
+/* Arama ikonuna bastığımız zaman çıkan siyah ekranın jquery efektiyle yavaş bir şekilde açılmaını
+ ve o sırada offfcanvas'ı duruma göre görünür veya görünmez yapıyoruz. */
+
 $(document).ready(function () {
     $('.bi-search').on('click', function () {
         $('.search-model').fadeIn(400);
@@ -15,13 +18,35 @@ $(document).ready(function () {
 });
 
 
-const dropdownItem = document.querySelector('.dropdown-menu');
-const navLink = document.querySelector('.nav-item.dropdown .nav-link');
-  
-dropdownItem.addEventListener('mouseover', function() {
-    navLink.style.borderBottom = '3px solid var(--halloween)';
-});
+window.addEventListener('resize', dropdownClick);
+dropdownClick();
 
-dropdownItem.addEventListener('mouseout', function() {
-    navLink.style.borderBottom = '';
-});
+function dropdownClick() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const downIcon = document.querySelector('.dropdown .down-icon');
+    const rightIcon = document.querySelector('.dropdown .right-icon');
+
+    if (window.innerWidth < 991.9) {
+        dropdown.addEventListener('click', function() {
+            
+            if (!dropdownMenu.classList.contains('show')) {
+                downIcon.classList.remove('d-block');
+                downIcon.classList.add('d-none');
+                rightIcon.classList.add('d-block');
+                rightIcon.classList.remove('d-none');
+                dropdownMenu.classList.add('d-none');
+                dropdownMenu.classList.remove('d-block');
+            } else {
+                downIcon.classList.add('d-block');
+                downIcon.classList.remove('d-none');
+                rightIcon.classList.remove('d-block');
+                rightIcon.classList.add('d-none');
+                dropdownMenu.classList.add('d-block');
+                dropdownMenu.classList.remove('d-none');
+            }
+        });
+    } 
+}
+
+
