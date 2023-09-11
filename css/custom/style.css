@@ -85,7 +85,8 @@ a{
 .dropdown-menu {
     position: absolute;
     display: none;
-    top: 77px;
+    top: 76.4px;
+    left: 0;
     font-size: initial !important;
     font-family: "Cabin", sans-serif;
     color: var(--night);
@@ -170,10 +171,6 @@ a{
     .dropdown:hover .dropdown-menu {
         display: block !important;
         animation: slideDown 0.4s ease-in-out;
-    }
-
-    .dropdown-toggle.show .dropdown-menu{
-        display: none !important;
     }
 
     .dropdown-menu[data-bs-popper]{

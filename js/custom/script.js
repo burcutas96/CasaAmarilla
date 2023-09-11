@@ -1,7 +1,7 @@
 'use strict';
 
-/* Arama ikonuna bastığımız zaman çıkan siyah ekranın jquery efektiyle yavaş bir şekilde açılmaını
- ve o sırada offfcanvas'ı duruma göre görünür veya görünmez yapıyoruz. */
+/* Arama ikonuna bastığımız zaman çıkan siyah ekranın jquery efektiyle yavaş bir şekilde açılmasını
+ ve o sırada offfcanvas'ı duruma göre görünür veya görünmez yapmayı sağlıyoruz. */
 
 $(document).ready(function () {
     $('.bi-search').on('click', function () {
@@ -18,9 +18,8 @@ $(document).ready(function () {
 });
 
 
-window.addEventListener('resize', dropdownClick);
+/* Ekran genişliğine göre açılır menünün ve ona bağlı ikonların davranışını değiştiriyoruz. */
 dropdownClick();
-
 function dropdownClick() {
     const dropdown = document.querySelector('.dropdown');
     const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -50,3 +49,5 @@ function dropdownClick() {
 }
 
 
+/* Ekran boyutunun değiştiği her anda kontrol edilmesi gereken fonksiyonları, resize event'iyle tetikliyoruz. */
+window.addEventListener('resize', dropdownClick);
