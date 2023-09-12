@@ -6,7 +6,10 @@
 
 html{
     font-size: 10px;
-    font-family: "Cabin", sans-serif;
+}
+
+body{
+    font-family: "Cabin", sans-serif !important;
 }
 
 :root{
@@ -27,6 +30,9 @@ a{
     color: var(--white);    
     text-decoration: none !important;
 }
+
+
+/* Navbar */
 
 #mainNavbar{
     height: 77px;
@@ -166,6 +172,37 @@ a{
     outline: none;
 }
 
+
+/* Header */
+.carousel::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(0, 0, 0, .6);
+}
+
+.opening{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--white);
+    transform: translate(-50%, -50%);
+}
+
+.opening-title{
+    font-size: 6.8rem;
+    font-weight: 500;
+    font-family: 'Libre Baskerville', serif;
+    margin-bottom: 2.5rem;
+}
+
+.opening-text{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
 
 @media (min-width: 991.9px) {
     .dropdown:hover .dropdown-menu {
@@ -325,8 +362,6 @@ a{
 }
 
 
-  
-  
   
   
   

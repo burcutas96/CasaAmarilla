@@ -48,6 +48,20 @@ function dropdownClick() {
     } 
 }
 
+CarouselContinue();
+function CarouselContinue(){
+    var carousel = document.getElementById('mySlide');
+
+    var carouselInstance = new bootstrap.Carousel(carousel, {
+        interval: 4500  
+    });
+
+    carousel.addEventListener('mouseover', function () {
+        carouselInstance.cycle();
+    });
+}
+
+
 
 /* Ekran boyutunun değiştiği her anda kontrol edilmesi gereken fonksiyonları, resize event'iyle tetikliyoruz. */
 window.addEventListener('resize', dropdownClick);
