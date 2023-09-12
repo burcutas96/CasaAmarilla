@@ -31,6 +31,17 @@ a{
     text-decoration: none !important;
 }
 
+.button-outline{
+    background-color: transparent;
+    color: var(--white);
+    display: inline-block;
+    padding: .7rem .2rem;
+    border: none;
+    font-size: 1.5rem;
+    letter-spacing: .2rem;
+    border-bottom: 3px solid var(--halloween);
+}
+
 
 /* Navbar */
 
@@ -188,20 +199,45 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 720px;
     color: var(--white);
     transform: translate(-50%, -50%);
 }
 
 .opening-title{
-    font-size: 6.8rem;
+    font-size: 6.7rem;
     font-weight: 500;
     font-family: 'Libre Baskerville', serif;
     margin-bottom: 2.5rem;
 }
 
 .opening-text{
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: .1rem;
+}
+
+@media (max-width: 1199.9px){
+    .opening{
+        width: 670px;
+    }
+
+    .opening-title{
+        font-size: 6.2rem;
+        margin-bottom: 2.3rem;
+    }
+
+    .opening-text{
+        font-size: 1.5rem;
+        margin-bottom: 2.3rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .button-outline{
+        padding: .5rem .1rem;
+        font-size: 1.3rem;
+        letter-spacing: .2rem;
+    }
 }
 
 @media (min-width: 991.9px) {
@@ -306,6 +342,27 @@ a{
     .dropdown-toggle:hover + .down-icon{
         color: var(--halloween) !important;
     }
+
+    .opening{
+        width: 610px;
+    }
+
+    .opening-title{
+        font-size: 5.7rem;
+        margin-bottom: 2rem;
+    }
+
+    .opening-text{
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .button-outline{
+        padding: .4rem .1rem;
+        font-size: 1.1rem;
+        letter-spacing: .2rem;
+    }
 }
 
 @media (max-width: 767px){
@@ -322,6 +379,50 @@ a{
         padding-bottom: .3rem;
         padding-left: .2rem;
         font-size: 3.4rem;
+    }
+
+    .opening{
+        width: 535px;
+    }
+
+    .opening-title{
+        font-size: 5rem;
+        margin-bottom: 1rem;
+    }
+
+    .opening-text{
+        font-size: 1.2rem;
+        margin-bottom: 1.3rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .button-outline{
+        padding: .3rem .1rem;
+        font-size: .8rem;
+        letter-spacing: .1rem;
+    }
+}
+
+@media (max-width: 619.9px){
+    .opening{
+        width: 460px;
+    }
+
+    .opening-title{
+        font-size: 4.3rem;
+        margin-bottom: .2rem;
+    }
+
+    .opening-text{
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .button-outline{
+        padding: .2rem .1rem;
+        font-size: .8rem;
+        letter-spacing: .1rem;
     }
 }
 
@@ -344,6 +445,35 @@ a{
         padding-left: .1rem;
         font-size: 3rem;
     }
+
+    .carousel-indicators [data-bs-target] {
+        height: 2px !important;
+        width: 25px !important;
+    }
+}
+
+@media (max-width: 531.9px){
+    .opening{
+        width: 395px;
+        text-align: center;
+        transform: translate(-50%, -55%);
+    }
+
+    .opening-title{
+        font-size: 3.5rem;
+    }
+
+    .opening-text{
+        text-align: center;
+        font-size: 1.1rem;
+        letter-spacing: 0.02rem;
+    }
+
+    .button-outline{
+        padding: .2rem .1rem;
+        font-size: .7rem;
+        letter-spacing: .1rem;
+    }
 }
 
 @media (max-width: 405px){
@@ -361,7 +491,41 @@ a{
     }
 }
 
+@media (min-width: 438px) and (max-width: 532px){
+    .carousel-indicators [data-bs-target] {
+        height: 1px !important;
+        width: 25px !important;
+    }
+}
 
+@media (max-width: 437.9px){
+    .carousel-indicators [data-bs-target] {
+        height: 1px !important;
+        width: 20px !important;
+    }
+
+    .opening{
+        width: 330px;
+        text-align: center;
+        transform: translate(-50%, -55%);
+    }
+
+    .opening-title{
+        font-size: 2.0rem;
+    }
+
+    .opening-text{
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .button-outline{
+        padding: .1rem 0;
+        font-size: .6rem;
+        letter-spacing: .1rem;
+        border-bottom: 2px solid var(--halloween);
+    }
+}
   
   
   
