@@ -48,6 +48,7 @@ function dropdownClick() {
     } 
 }
 
+
 CarouselContinue();
 function CarouselContinue(){
     var carousel = document.getElementById('mySlide');
@@ -61,6 +62,104 @@ function CarouselContinue(){
     });
 }
 
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    /* Hangi .datePicker class'ına tıklandıysa onun için flatpickr kütüphanesine 
+    ait bir tarih seçici oluşturuyoruz. */
+    const datePicker = flatpickr(".datePicker", {
+        dateFormat: "d F Y",
+        minDate: "today",
+    });
+
+
+    /* Guests and Rooms altındaki formda, girilen değerlerin sayısal olup olmadığını 
+    ve bu girilen değerlerin 0'dan büyük ve 99'dan küçük olma durumlarını kontrol ediyoruz. */
+    const inputElement = document.querySelector('.input-number');
+
+    inputElement.addEventListener('input', function() {
+        const inputValue = inputElement.value;
+        const numericValue = parseInt(inputValue);
+
+        if (isNaN(numericValue) || numericValue < 0 || numericValue > 99) {
+            inputElement.value = '';
+        }
+    });
+
+});
+
+
+function DatePickerOpen(button) {
+    const parentDiv = button.parentElement;
+    const datePickerInput = parentDiv.querySelector('.datePicker');
+
+    if (datePickerInput) {
+        flatpickr(datePickerInput, {
+            dateFormat: "d F Y",
+            minDate: "today",
+        }).open();
+    }
+}
+
+
+function DatePickerClear(button) {
+    const parentDiv = button.parentElement;
+    const datePickerInput = parentDiv.querySelector('.datePicker');
+
+    if (datePickerInput) {
+        flatpickr(datePickerInput, {
+            dateFormat: "d F Y",
+            minDate: "today",
+        }).clear();
+    }
+}
+
+
+function GuestsForm(){
+    const guestsform = document.querySelector('.guestsform');
+    const guestsformParentDiv = guestsform.parentElement;
+    const rightIcon = guestsformParentDiv.querySelector('.right-icon');
+    const bottomIcon = guestsformParentDiv.querySelector('.down-icon');
+
+    if(guestsform.classList.contains('active')){
+        guestsform.classList.remove('active');
+        rightIcon.classList.add('d-block');
+        rightIcon.classList.remove('d-none');
+        bottomIcon.classList.remove('d-block');
+        bottomIcon.classList.add('d-none');
+    }
+    else{
+        guestsform.classList.add('active');
+        rightIcon.classList.add('d-none');
+        rightIcon.classList.remove('d-block');
+        bottomIcon.classList.add('d-block');
+        bottomIcon.classList.remove('d-none');
+    }
+}
+
+
+function DecreaseButton(button, minValue){
+    const parentDiv = button.parentElement;
+    const inputElement = parentDiv.querySelector('.input-number');
+
+    let currentValue = parseInt(inputElement.value);
+    if (!isNaN(currentValue) && currentValue > minValue) {
+        currentValue--;
+        inputElement.value = currentValue;
+    }
+}
+
+
+function IncreaseButton(button){
+    const parentDiv = button.parentElement;
+    const inputElement = parentDiv.querySelector('.input-number');
+
+    let currentValue = parseInt(inputElement.value);
+    if (!isNaN(currentValue) && currentValue >= 0 && currentValue < 99) {
+        currentValue++;
+        inputElement.value = currentValue;
+    }
+}
 
 
 /* Ekran boyutunun değiştiği her anda kontrol edilmesi gereken fonksiyonları, resize event'iyle tetikliyoruz. */

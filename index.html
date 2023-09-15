@@ -11,8 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="icon" type="image/x-icon" href="/images/s-letter-icon-2.png">
     <script src="js/custom/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body id="home">
@@ -96,17 +98,107 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="opening d-flex flex-column">
             <div class="opening-title">Sona A Luxury Hotel</div>
-            <div class="opening-text">Here are the best hotel booking sites, including recommendations 
+            <div class="opening-text">Here are the best hotel booking sites, including recommendations
                 for international travel and for finding low-priced hotel rooms.</div>
             <div class="d-flex justify-content-center">
                 <button type="button" class="button-outline">DISCOVER NOW</button>
             </div>
         </div>
+
     </header>
 
+
+    <!-- Reservation -->
+    <section id="reservation" class="section-padding">
+        <div class="container-lg">
+            <div class="reservation-title d-flex justify-content-center">
+                <span>Booking Your Hotel</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
+                    <input type="text" class="form-control datePicker" placeholder="Check In">
+
+                    <button class="btn input-button date" type="button" onclick="DatePickerOpen(this)">
+                        <i class="fas fa-calendar-days"></i>
+                    </button>
+
+                    <button class="btn input-button dateClear" type="button" onclick="DatePickerClear(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
+                    <input type="text" class="form-control datePicker" placeholder="Check Out">
+
+                    <button class="btn input-button date" type="button" onclick="DatePickerOpen(this)">
+                        <i class="fas fa-calendar-days"></i>
+                    </button>
+
+                    <button class="btn input-button dateClear" type="button" onclick="DatePickerClear(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center position-relative mt-5 mt-xl-0">
+                    <div class="position-relative">
+                        <button id="guests" type="text" class="form-control" onclick="GuestsForm()">Guests and Rooms
+                            <i class="bi bi-caret-right-fill right-icon"></i>
+                            <i class="bi bi-caret-down-fill down-icon d-none"></i>
+                        </button>
+                    </div>
+                    <div class="guestsform">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label for="adults">Adults</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="2">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <label for="adults">Children</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 0)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="0">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <label for="adults">Rooms</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="1">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-xl-0">
+                    <button type="submit" class="btn form-control reservation-button">Reservation</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
 
     <!-- SearchModel -->
     <div class="search-model">
