@@ -311,7 +311,7 @@ a{
     transition: opacity .3s;
     position: absolute;
     top: 6rem;
-    left: 33px;
+    left: 9px;
     padding: 1.5rem 2rem;
     border-radius: 10px;
     background-color: var(--white);
@@ -384,6 +384,10 @@ a{
         padding: .5rem .1rem;
         font-size: 1.3rem;
         letter-spacing: .2rem;
+    }
+
+    .guestsform{
+        left: initial;
     }
 }
 
@@ -547,10 +551,6 @@ a{
         padding: .3rem .1rem;
         font-size: .8rem;
         letter-spacing: .1rem;
-    }
-
-    .guestsform{
-        left: initial;
     }
 
     #reservation .row{
