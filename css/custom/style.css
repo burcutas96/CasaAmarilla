@@ -241,7 +241,6 @@ a{
 
 #reservation .form-control{
     width: 250px;
-    margin-left: 1.2rem;
     height: 4.5rem;
     font-size: 1.5rem;
     padding-left: 1.5rem;
@@ -552,6 +551,10 @@ a{
 
     .guestsform{
         left: initial;
+    }
+
+    #reservation .row{
+        margin-top: 1.5rem;
     }
 }
 
