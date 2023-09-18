@@ -85,8 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     dateIconElements.forEach(function (dateIconElement, index) {
         const inputField = datePickerElements[index];
+        const today = new Date();
         const datepicker = new Pikaday({
             field: inputField,
+            minDate: today,
             // date formatını aşağıda ayarladım.
             toString(date) {
                 const day = date.getDate();
@@ -112,9 +114,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     window.onclick = function (event) {
-        if (!event.target.matches('#guests')) {
+        if (!event.target.matches('#guests') && !event.target.matches('.guestsform') 
+            && !event.target.matches('.guestsform div') 
+            && !event.target.matches('.guestsform label')
+            && !event.target.matches('.guestsform input')) 
+            {
             var guestsform = document.querySelector(".guestsform");
             const guestsformParentDiv = guestsform.parentElement;
+
             const bottomIcon = guestsformParentDiv.querySelector('.down-icon');
             const rightIcon = guestsformParentDiv.querySelector('.right-icon');
 
@@ -129,18 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
-function DatePickerClear(button) {
-    const parentDiv = button.parentElement;
-    const datePickerInput = parentDiv.querySelector('.datePicker');
-
-    if (datePickerInput) {
-        flatpickr(datePickerInput, {
-            dateFormat: "d F Y",
-            minDate: "today",
-        }).onClear();
-    }
-}
 
 
 function GuestsForm() {
@@ -167,6 +162,8 @@ function GuestsForm() {
 
 
 function DecreaseButton(button, minValue) {
+    event.stopPropagation();
+
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 
@@ -179,6 +176,8 @@ function DecreaseButton(button, minValue) {
 
 
 function IncreaseButton(button) {
+    event.stopPropagation();
+
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 

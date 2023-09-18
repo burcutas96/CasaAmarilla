@@ -598,10 +598,29 @@ a{
     .dateInput .date-icon {
         right: 3.7rem;
     }
+
+    .guestsform{
+        width: 310px;
+    }
+
+    .guestsform .counter-button {
+        font-size: 2.2rem;
+    }
+
+    .guestsform input{
+        width: 4rem;
+        height: 3.7rem;
+        font-size: 1.5rem;
+        margin: 0 5px;
+    }
+
+    .guestsform label{
+        margin-right: 4rem;
+        font-size: 1.6rem !important;
+    }
 }
 
 @media (max-width: 619.9px){
-    
     .opening{
         width: 485px;
     }
@@ -688,20 +707,24 @@ a{
     .dateInput .date-icon {
         right: 3.3rem;
     }
-}
 
-@media (max-width: 405px){
-    .search-close-switch{
-        width: 4.1rem;
-        height: 4.1rem;
-        font-size: 1.7rem;
-        line-height: 1.7rem;
+    .guestsform{
+        width: 280px;
     }
 
-    .search-model #search-input{
-        width: 32rem;
-        height: 4rem;
-        font-size: 2.5rem;
+    .guestsform .counter-button {
+        font-size: 2rem;
+    }
+
+    .guestsform input{
+        width: 3.7rem;
+        height: 3.3rem;
+        font-size: 1.4rem;
+        margin: 0 2px;
+    }
+
+    .guestsform label{
+        margin-right: 3.7rem;
     }
 }
 
@@ -770,9 +793,41 @@ a{
     .dateInput .date-icon {
         right: 2.9rem;
     }
+
+    .guestsform{
+        width: 257px;
+    }
+
+    .guestsform .counter-button {
+        font-size: 1.8rem;
+    }
+
+    .guestsform input{
+        width: 3.3rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .guestsform label{
+        margin-right: 3rem;
+        font-size: 1.4rem !important;
+    }
 }
   
-  
+@media (max-width: 405px){
+    .search-close-switch{
+        width: 4.1rem;
+        height: 4.1rem;
+        font-size: 1.7rem;
+        line-height: 1.7rem;
+    }
+
+    .search-model #search-input{
+        width: 32rem;
+        height: 4rem;
+        font-size: 2.5rem;
+    }
+}
   
   
   
