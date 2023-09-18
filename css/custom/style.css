@@ -280,11 +280,6 @@ a{
     display: block;
 }
 
-#guests{
-    text-align: left;
-    font-size: 1.6rem !important;
-}
-
 #reservation .reservation-button{
     background-color: var(--halloween);
     padding-left: 0;
@@ -303,11 +298,50 @@ a{
     border: 2px solid var(--summer);
 }
 
+.dateInput{
+    position: relative;
+}
+
+.dateInput .datePicker:hover{
+    cursor: pointer;
+}
+
+.dateInput i{
+    position: absolute;
+    height: 4.5rem;
+    width: 4rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    transition: all .4s;
+}
+
+.dateInput i:hover{
+    color: var(--white);
+    background-color: var(--halloween);
+}
+
+.dateInput .date-icon {
+    right: 4rem;
+}
+
+.dateInput .clear-icon{
+    right: 0px;
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
+#guests{
+    text-align: left;
+    font-size: 1.6rem !important;
+}
+
 .guestsform{
     opacity: 0;
-    overflow: hidden;
     width: 330px;
-    display: inline-block;
+    display: none;
     transition: opacity .3s;
     position: absolute;
     top: 6rem;
@@ -320,7 +354,7 @@ a{
 
 .guestsform.active{
     opacity: 1;
-    overflow: visible;
+    display: inline-block;
 }
 
 .guestsform label{
@@ -365,26 +399,6 @@ a{
 
 
 @media (max-width: 1199.9px){
-    .opening{
-        width: 670px;
-    }
-
-    .opening-title{
-        font-size: 6.2rem;
-        margin-bottom: 2.3rem;
-    }
-
-    .opening-text{
-        font-size: 1.5rem;
-        margin-bottom: 2.3rem;
-        letter-spacing: 0.05rem;
-    }
-
-    .button-outline{
-        padding: .5rem .1rem;
-        font-size: 1.3rem;
-        letter-spacing: .2rem;
-    }
 
     .guestsform{
         left: initial;
@@ -415,6 +429,10 @@ a{
     .dropdown .right-icon,
     .dropdown .down-icon{
         display: none !important;
+    }
+
+    .carousel-inner img{
+        max-height: 750px;
     }
 }
 
@@ -495,23 +513,23 @@ a{
     }
 
     .opening{
-        width: 610px;
+        width: 670px;
     }
 
     .opening-title{
-        font-size: 5.7rem;
-        margin-bottom: 2rem;
+        font-size: 6.2rem;
+        margin-bottom: 2.3rem;
     }
 
     .opening-text{
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-        letter-spacing: 0.1rem;
+        font-size: 1.5rem;
+        margin-bottom: 2.3rem;
+        letter-spacing: 0.05rem;
     }
 
     .button-outline{
-        padding: .4rem .1rem;
-        font-size: 1.1rem;
+        padding: .5rem .1rem;
+        font-size: 1.3rem;
         letter-spacing: .2rem;
     }
 }
@@ -533,51 +551,73 @@ a{
     }
 
     .opening{
-        width: 535px;
+        width: 575px;
     }
 
     .opening-title{
-        font-size: 5rem;
-        margin-bottom: 1rem;
+        font-size: 5.3rem;
+        margin-bottom: 2rem;
     }
 
     .opening-text{
-        font-size: 1.2rem;
-        margin-bottom: 1.3rem;
-        letter-spacing: 0.05rem;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1rem;
     }
 
     .button-outline{
-        padding: .3rem .1rem;
-        font-size: .8rem;
-        letter-spacing: .1rem;
+        padding: .4rem .1rem;
+        font-size: 1.1rem;
     }
 
     #reservation .row{
         margin-top: 1.5rem;
     }
+
+    #reservation .form-control {
+        width: 235px;
+    }
+
+    #reservation .reservation-button{
+        font-size: 1.9rem;
+    }
+
+    #reservation .right-icon, #reservation .down-icon {
+        font-size: 1.4rem;
+    }
+
+    .reservation-title{
+        font-size: 3.5rem;
+    }
+
+    .dateInput i{
+        width: 3.7rem;
+        font-size: 1.3rem;
+    }
+
+    .dateInput .date-icon {
+        right: 3.7rem;
+    }
 }
 
 @media (max-width: 619.9px){
+    
     .opening{
-        width: 460px;
+        width: 485px;
     }
 
     .opening-title{
-        font-size: 4.3rem;
-        margin-bottom: .2rem;
+        font-size: 4.5rem;
+        margin-bottom: 1rem;
     }
 
     .opening-text{
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
         letter-spacing: 0.05rem;
+        text-align: center;
     }
 
     .button-outline{
-        padding: .2rem .1rem;
-        font-size: .8rem;
-        letter-spacing: .1rem;
+        padding: .3rem .1rem;
     }
 }
 
@@ -609,25 +649,44 @@ a{
 
 @media (max-width: 531.9px){
     .opening{
-        width: 395px;
+        width: 410px;
         text-align: center;
-        transform: translate(-50%, -55%);
     }
 
     .opening-title{
         font-size: 3.5rem;
     }
 
-    .opening-text{
-        text-align: center;
-        font-size: 1.1rem;
-        letter-spacing: 0.02rem;
-    }
-
     .button-outline{
         padding: .2rem .1rem;
-        font-size: .7rem;
-        letter-spacing: .1rem;
+        font-size: 1rem;
+    }
+
+    #reservation .form-control {
+        width: 225px;
+    }
+
+    #reservation .reservation-button{
+        font-size: 1.7rem;
+    }
+
+    #reservation .right-icon, 
+    #reservation .down-icon {
+        font-size: 1.3rem;
+        top: 14px;
+    }
+
+    .reservation-title{
+        font-size: 3.2rem;
+    }
+
+    .dateInput i{
+        width: 3.3rem;
+        font-size: 1.1rem;
+    }
+
+    .dateInput .date-icon {
+        right: 3.3rem;
     }
 }
 
@@ -660,25 +719,56 @@ a{
     }
 
     .opening{
-        width: 330px;
-        text-align: center;
-        transform: translate(-50%, -55%);
+        width: 310px;
     }
 
     .opening-title{
-        font-size: 2.0rem;
+        font-size: 2.8rem;
     }
 
     .opening-text{
-        text-align: center;
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 
     .button-outline{
-        padding: .1rem 0;
-        font-size: .6rem;
+        font-size: .9rem;
         letter-spacing: .1rem;
         border-bottom: 2px solid var(--halloween);
+    }
+
+    #reservation .form-control {
+        width: 215px;
+        font-size: 1.4rem;
+    }
+
+    #reservation .form-control::placeholder {
+        font-size: 1.4rem;
+    }
+
+    #reservation .reservation-button{
+        font-size: 1.6rem;
+    }
+
+    #reservation .right-icon, 
+    #reservation .down-icon {
+        font-size: 1.2rem;
+    }
+
+    .reservation-title{
+        font-size: 2.8rem;
+    }
+
+    #guests{
+        font-size: 1.4rem !important;
+    }
+
+    .dateInput i{
+        width: 2.9rem;
+        font-size: 1rem;
+    }
+
+    .dateInput .date-icon {
+        right: 2.9rem;
     }
 }
   

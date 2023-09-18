@@ -27,8 +27,8 @@ function dropdownClick() {
     const rightIcon = document.querySelector('.dropdown .right-icon');
 
     if (window.innerWidth < 991.9) {
-        dropdown.addEventListener('click', function() {
-            
+        dropdown.addEventListener('click', function () {
+
             if (!dropdownMenu.classList.contains('show')) {
                 downIcon.classList.remove('d-block');
                 downIcon.classList.add('d-none');
@@ -45,16 +45,16 @@ function dropdownClick() {
                 dropdownMenu.classList.remove('d-none');
             }
         });
-    } 
+    }
 }
 
 
 CarouselContinue();
-function CarouselContinue(){
+function CarouselContinue() {
     var carousel = document.getElementById('mySlide');
 
     var carouselInstance = new bootstrap.Carousel(carousel, {
-        interval: 4500  
+        interval: 5000
     });
 
     carousel.addEventListener('mouseover', function () {
@@ -63,21 +63,13 @@ function CarouselContinue(){
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-
-    /* Hangi .datePicker class'ına tıklandıysa onun için flatpickr kütüphanesine 
-    ait bir tarih seçici oluşturuyoruz. */
-    const datePicker = flatpickr(".datePicker", {
-        dateFormat: "d F Y",
-        minDate: "today",
-    });
-
+document.addEventListener("DOMContentLoaded", function () {
 
     /* Guests and Rooms altındaki formda, girilen değerlerin sayısal olup olmadığını 
     ve bu girilen değerlerin 0'dan büyük ve 99'dan küçük olma durumlarını kontrol ediyoruz. */
     const inputElement = document.querySelector('.input-number');
 
-    inputElement.addEventListener('input', function() {
+    inputElement.addEventListener('input', function () {
         const inputValue = inputElement.value;
         const numericValue = parseInt(inputValue);
 
@@ -86,20 +78,56 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-});
+
+    const clearIconElements = document.querySelectorAll('.dateInput .clear-icon');
+    const dateIconElements = document.querySelectorAll('.dateInput .date-icon');
+    const datePickerElements = document.querySelectorAll('.datePicker');
+
+    dateIconElements.forEach(function (dateIconElement, index) {
+        const inputField = datePickerElements[index];
+        const datepicker = new Pikaday({
+            field: inputField,
+            // date formatını aşağıda ayarladım.
+            toString(date) {
+                const day = date.getDate();
+                const month = date.toLocaleString('default', { month: 'long' });
+                const year = date.getFullYear();
+                return `${day} ${month}, ${year}`;
+            },
+        });
+
+        dateIconElement.addEventListener('click', () => {
+            if (datepicker.isVisible()) {
+                datepicker.hide();
+            } else {
+                datepicker.show();
+            }
+        });
+
+        const clearIconElement = clearIconElements[index];
+        clearIconElement.addEventListener('click', () => {
+            inputField.value = '';
+        });
+    });
 
 
-function DatePickerOpen(button) {
-    const parentDiv = button.parentElement;
-    const datePickerInput = parentDiv.querySelector('.datePicker');
+    window.onclick = function (event) {
+        if (!event.target.matches('#guests')) {
+            var guestsform = document.querySelector(".guestsform");
+            const guestsformParentDiv = guestsform.parentElement;
+            const bottomIcon = guestsformParentDiv.querySelector('.down-icon');
+            const rightIcon = guestsformParentDiv.querySelector('.right-icon');
 
-    if (datePickerInput) {
-        flatpickr(datePickerInput, {
-            dateFormat: "d F Y",
-            minDate: "today",
-        }).open();
+            if (guestsform.classList.contains('active')) {
+                guestsform.classList.remove('active');
+                bottomIcon.classList.remove('d-block');
+                bottomIcon.classList.add('d-none');
+                rightIcon.classList.add('d-block');
+                rightIcon.classList.remove('d-none');
+            }
+        }
     }
-}
+});
 
 
 function DatePickerClear(button) {
@@ -110,25 +138,25 @@ function DatePickerClear(button) {
         flatpickr(datePickerInput, {
             dateFormat: "d F Y",
             minDate: "today",
-        }).clear();
+        }).onClear();
     }
 }
 
 
-function GuestsForm(){
+function GuestsForm() {
     const guestsform = document.querySelector('.guestsform');
     const guestsformParentDiv = guestsform.parentElement;
     const rightIcon = guestsformParentDiv.querySelector('.right-icon');
     const bottomIcon = guestsformParentDiv.querySelector('.down-icon');
 
-    if(guestsform.classList.contains('active')){
+    if (guestsform.classList.contains('active')) {
         guestsform.classList.remove('active');
         rightIcon.classList.add('d-block');
         rightIcon.classList.remove('d-none');
         bottomIcon.classList.remove('d-block');
         bottomIcon.classList.add('d-none');
     }
-    else{
+    else {
         guestsform.classList.add('active');
         rightIcon.classList.add('d-none');
         rightIcon.classList.remove('d-block');
@@ -138,7 +166,7 @@ function GuestsForm(){
 }
 
 
-function DecreaseButton(button, minValue){
+function DecreaseButton(button, minValue) {
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 
@@ -150,7 +178,7 @@ function DecreaseButton(button, minValue){
 }
 
 
-function IncreaseButton(button){
+function IncreaseButton(button) {
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 
