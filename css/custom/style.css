@@ -266,13 +266,14 @@ a{
 } 
 
 #reservation .form-control{
-    width: 250px;
+    width: 330px;
     height: 4.5rem;
     font-size: 1.5rem;
     padding-left: 1.5rem;
     border: 2px solid transparent;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
     display: inline-block !important;
+    transition: all .4s;
 }
 
 #reservation .form-control:focus{
@@ -322,6 +323,11 @@ a{
 #reservation .reservation-button:hover{
     background-color: var(--summer);
     border: 2px solid var(--summer);
+}
+
+#reservation .row>*{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .dateInput{
@@ -437,8 +443,11 @@ a{
     color: var(--black);
 }
 
-
-
+@media (max-width: 1399.9px){
+    #reservation .form-control{
+        width: 286px;
+    }
+}
 
 @media (max-width: 1199.9px){
     .guestsform{
@@ -585,7 +594,7 @@ a{
     }
 }
 
-@media (max-width: 767px){
+@media (max-width: 767.9px){
     #mainNavbar {
         padding: 0rem 2rem;
     }
@@ -687,7 +696,7 @@ a{
     }
 
     #aboutus img {
-        width: 240px;
+        width: 230px;
     }
 }
 
@@ -738,7 +747,7 @@ a{
     }
 }
 
-@media (max-width: 577.9px){
+@media (max-width: 575.9px){
     #aboutus img {
         width: 350px;
     }
@@ -861,6 +870,7 @@ a{
 
     .reservation-title{
         font-size: 2.8rem;
+        text-align: center;
     }
 
     #guests{
