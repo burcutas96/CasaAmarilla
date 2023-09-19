@@ -2,7 +2,6 @@
 
 /* Arama ikonuna bastığımız zaman çıkan siyah ekranın jquery efektiyle yavaş bir şekilde açılmasını
  ve o sırada offfcanvas'ı duruma göre görünür veya görünmez yapmayı sağlıyoruz. */
-
 $(document).ready(function () {
     $('.bi-search').on('click', function () {
         $('.search-model').fadeIn(400);
@@ -16,6 +15,7 @@ $(document).ready(function () {
         $('.offcanvas.show').css('visibility', 'visible');
     });
 });
+
 
 
 /* Ekran genişliğine göre açılır menünün ve ona bağlı ikonların davranışını değiştiriyoruz. */
@@ -49,6 +49,8 @@ function dropdownClick() {
 }
 
 
+
+/* Açılış ekranındaki carousel için oluşturulan bir metot. */
 CarouselContinue();
 function CarouselContinue() {
     var carousel = document.getElementById('mySlide');
@@ -61,6 +63,7 @@ function CarouselContinue() {
         carouselInstance.cycle();
     });
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -79,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+
+    /* Pikaday kütüphanesiyle tarih seçici oluşturduk. Ve temizleme ikonlarıyla tarih ikonlarını,
+    hemen yanlarındaki tarih seçiciyle ilişkilendirdik. */
     const clearIconElements = document.querySelectorAll('.dateInput .clear-icon');
     const dateIconElements = document.querySelectorAll('.dateInput .date-icon');
     const datePickerElements = document.querySelectorAll('.datePicker');
@@ -97,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return `${day} ${month}, ${year}`;
             },
         });
-
         dateIconElement.addEventListener('click', () => {
             if (datepicker.isVisible()) {
                 datepicker.hide();
@@ -105,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 datepicker.show();
             }
         });
-
         const clearIconElement = clearIconElements[index];
         clearIconElement.addEventListener('click', () => {
             inputField.value = '';
@@ -113,6 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+
+    /* Aşağıdaki fonksiyonla reservasyon kısmındaki guests and rooms açılır menüsünü, sayfada herhangi bir yere tıklayınca kapanmasını sağlıyoruz. */
+    /* Ve tabi açılır menüye ait olan butona veya açılır menüye tıklayınca dropdown'ın kapatılmasını aşağıdaki koşullarla engelliyoruz. */
     window.onclick = function (event) {
         if (!event.target.matches('#guests') && !event.target.matches('.guestsform') 
             && !event.target.matches('.guestsform div') 
@@ -138,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+/* Bu fonksiyon ile rezervasyon kısmındaki guests and rooms açılır menüsünü açıp ilgili ikonları düzenliyoruz. */
 function GuestsForm() {
     const guestsform = document.querySelector('.guestsform');
     const guestsformParentDiv = guestsform.parentElement;
@@ -161,6 +169,8 @@ function GuestsForm() {
 }
 
 
+
+/* Guests and rooms açılır menüsündeki eksi butonuyla input'daki azaltma işlemini aşağıdaki fonksiyonla yapıyoruz. */
 function DecreaseButton(button, minValue) {
     event.stopPropagation();
 
@@ -175,6 +185,8 @@ function DecreaseButton(button, minValue) {
 }
 
 
+
+/* Guests and rooms açılır menüsündeki artı butonuyla input'daki arttırma işlemini aşağıdaki fonksiyonla yapıyoruz. */
 function IncreaseButton(button) {
     event.stopPropagation();
 
@@ -187,6 +199,7 @@ function IncreaseButton(button) {
         inputElement.value = currentValue;
     }
 }
+
 
 
 /* Ekran boyutunun değiştiği her anda kontrol edilmesi gereken fonksiyonları, resize event'iyle tetikliyoruz. */

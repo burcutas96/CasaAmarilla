@@ -13,18 +13,16 @@ body{
 }
 
 :root{
-    --forever: #707079;
-    --space: #333333;
     --black: #000000;
+    --space: #333333;
+    --scarlet: #595960;
+    --forever: #707079;
+    --shades: #9f9f9f;
     --vintage: #999999;
     --halloween: #DFA974;
     --summer: #edba87;
-    --shades: #9f9f9f;
+    --sky: #f8f7f7;
     --white: #FFFFFF;
-    --red: #e34c26;
-    --yellow: #178600;
-    --darkolive: #556b2f;
-    --lightolive: #718d42;
 }
 
 a{
@@ -39,17 +37,45 @@ a{
     padding: .7rem .2rem;
     border: none;
     font-size: 1.5rem;
+    text-transform: uppercase;
     letter-spacing: .2rem;
     border-bottom: 3px solid var(--halloween);
+    font-weight: 600;
 }
 
 .section-padding{
-    padding: 6rem 0;
+    padding: 6rem 3rem;
+}
+
+.light-background{
+    background-color: var(--sky);
+}
+
+.section-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title span{
+    text-transform: uppercase;
+    color: var(--halloween);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: .2rem;
+}
+
+.section-title h2{
+    font-size: 3.8rem;
+    font-family: 'Libre Baskerville', serif;
+    letter-spacing: .1rem;
+    text-align: center;
+    line-height: 6rem;
 }
 
 
 /* Navbar */
-
 #mainNavbar{
     height: 77px;
 }
@@ -398,10 +424,31 @@ a{
 }
 
 
-@media (max-width: 1199.9px){
+/* About Us */
+.about-text{
+    padding: 1.5rem 5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--scarlet);
+    font-weight: 500;
+}
 
+#aboutus .button-outline{
+    color: var(--black);
+}
+
+
+
+
+@media (max-width: 1199.9px){
     .guestsform{
         left: initial;
+    }
+}
+
+@media (max-width: 1199.9px) and (min-width: 992px) {
+    #aboutus img{
+        width: 200px;
     }
 }
 
@@ -532,9 +579,17 @@ a{
         font-size: 1.3rem;
         letter-spacing: .2rem;
     }
+
+    #aboutus img{
+        width: 325px;
+    }
 }
 
 @media (max-width: 767px){
+    #mainNavbar {
+        padding: 0rem 2rem;
+    }
+
     .search-close-switch{
         width: 4.7rem;
         height: 4.7rem;
@@ -567,7 +622,6 @@ a{
 
     .button-outline{
         padding: .4rem .1rem;
-        font-size: 1.1rem;
     }
 
     #reservation .row{
@@ -618,7 +672,25 @@ a{
         margin-right: 4rem;
         font-size: 1.6rem !important;
     }
+
+    .section-title span{
+        font-size: 1.4rem;
+    }
+    
+    .section-title h2{
+        font-size: 3.1rem;
+        line-height: 4.5rem;
+    }
+
+    .about-text{
+        padding: 1rem 3rem;
+    }
+
+    #aboutus img {
+        width: 240px;
+    }
 }
+
 
 @media (max-width: 619.9px){
     .opening{
@@ -663,6 +735,12 @@ a{
     .carousel-indicators [data-bs-target] {
         height: 2px !important;
         width: 25px !important;
+    }
+}
+
+@media (max-width: 577.9px){
+    #aboutus img {
+        width: 350px;
     }
 }
 
@@ -736,6 +814,10 @@ a{
 }
 
 @media (max-width: 437.9px){
+    #mainNavbar {
+        padding: 0rem 1rem;
+    }
+
     .carousel-indicators [data-bs-target] {
         height: 1px !important;
         width: 20px !important;
@@ -816,6 +898,20 @@ a{
     .guestsform label{
         margin-right: 2rem;
         font-size: 1.4rem !important;
+    }
+
+    .section-title span{
+        font-size: 1.2rem;
+    }
+    
+    .section-title h2{
+        font-size: 2.8rem;
+        line-height: 4rem;
+        letter-spacing: 0;
+    }
+
+    .about-text {
+        padding: 1rem 2rem;
     }
 }
   
