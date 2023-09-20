@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css"
         type="text/css">
     <link rel="icon" href="/images/s-letter-icon-2.png" type="image/x-icon">
@@ -42,10 +44,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
-                        <li class="nav-item"><a href="#rooms" class="nav-link btn-close-canvas">Rooms</a></li>
-                        <li class="nav-item"><a href="#aboutus" class="nav-link btn-close-canvas">About Us</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Rooms</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">About Us</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#pages" id="pagesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Pages
                                 <i class="bi bi-caret-right-fill right-icon"></i>
@@ -58,8 +60,8 @@
                                 <li><a class="dropdown-item" href="#premiumroom">Premium Room</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="#news" class="nav-link btn-close-canvas">News</a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link btn-close-canvas">Contact</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">News</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Contact</a></li>
                         <li class="nav-item"><i class="nav-link bi bi-search"></i></li>
                     </ul>
                 </div>
@@ -86,17 +88,20 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://ehotelservice.online/development/HotelSona/images/ciudad-maderas-MXbM1NrRqtI-unsplash.jpg" class="d-block w-100" alt="oda resmi">
+                    <img src="https://ehotelservice.online/development/HotelSona/images/valeriia-bugaiova-_pPHgeHz1uk-unsplash.jpg"
+                        class="d-block w-100" alt="otel resmi">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://ehotelservice.online/development/HotelSona/images/edvin-johansson-rlwE8f8anOc-unsplash.jpg" class="d-block w-100" alt="oda resmi">
+                    <img src="https://ehotelservice.online/development/HotelSona/images/ciudad-maderas-MXbM1NrRqtI-unsplash.jpg"
+                        class="d-block w-100" alt="otel resmi">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://ehotelservice.online/development/HotelSona/images/qui-nguyen-giL2fHNr3Lc-unsplash.jpg" class="d-block w-100" alt="otel resmi">
+                    <img src="https://ehotelservice.online/development/HotelSona/images/edvin-johansson-rlwE8f8anOc-unsplash.jpg"
+                        class="d-block w-100" alt="otel resmi">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://ehotelservice.online/development/HotelSona/images/valeriia-bugaiova-_pPHgeHz1uk-unsplash.jpg" class="d-block w-100"
-                        alt="otel resmi">
+                    <img src="https://ehotelservice.online/development/HotelSona/images/qui-nguyen-giL2fHNr3Lc-unsplash.jpg"
+                        class="d-block w-100" alt="otel resmi">
                 </div>
             </div>
         </div>
@@ -115,6 +120,93 @@
 
     <!-- Reservation -->
     <section id="reservation" class="section-padding">
+        <div class="container-lg">
+            <div class="reservation-title d-flex justify-content-center">
+                <span>Booking Your Hotel</span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
+                    <div class="dateInput position-relative">
+                        <label for="checkIn">Check In</label>
+                        <span class="checkInDate"></span>
+                        <input id="checkIn" type="text" class="form-control datePicker" readonly>
+                        <i class="fas fa-calendar-days date-icon"></i>
+                        <i class="fas fa-times clear-icon"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
+                    <div class="dateInput position-relative">
+                        <label for="checkOut">Check Out</label>
+                        <span class="checkOutDate"></span>
+                        <input id="checkOut" type="text" class="form-control datePicker" readonly>
+                        <i class="fas fa-calendar-days date-icon"></i>
+                        <i class="fas fa-times clear-icon"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center position-relative mt-5 mt-xl-0">
+                    <div class="position-relative">
+                        <button id="guests" type="text" class="form-control" onclick="GuestsForm()">Guests and Rooms
+                            <i class="bi bi-caret-right-fill right-icon"
+                                onclick="event.stopPropagation(); GuestsForm();"></i>
+                            <i class="bi bi-caret-down-fill down-icon d-none"
+                                onclick="event.stopPropagation(); GuestsForm();"></i>
+                        </button>
+                    </div>
+                    <div class="guestsform">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label for="adults">Adults</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="2">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <label for="adults">Children</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 0)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="0">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <label for="adults">Rooms</label>
+                            <div>
+                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
+                                    <i class="bi bi-dash counter-button"></i>
+                                </button>
+                                <input class="input-number" type="text" value="1">
+                                <button type="button" class="btn" onclick="IncreaseButton(this)">
+                                    <i class="bi bi-plus counter-button"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-xl-0">
+                    <button type="submit" class="btn form-control reservation-button">Reservation</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Reservation -->
+    <!-- <section id="reservation" class="section-padding">
         <div class="container-lg">
             <div class="reservation-title d-flex justify-content-center">
                 <span>Booking Your Hotel</span>
@@ -190,9 +282,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    
+
     <!-- AboutUs -->
     <section id="aboutus" class="section-padding light-background">
         <div class="container">
@@ -204,12 +296,12 @@
                     </div>
                     <div class="about-text">
                         <p>
-                            Sona.com is a leading online accommodation site. We’re passionate 
-                            about travel. Every day, we inspire and reach millions of travelers 
+                            Sona.com is a leading online accommodation site. We’re passionate
+                            about travel. Every day, we inspire and reach millions of travelers
                             across 90 local websites in 41 languages.
                         </p>
                         <p>
-                            So when it comes to booking the perfect hotel, vacation rental, 
+                            So when it comes to booking the perfect hotel, vacation rental,
                             resort, apartment, guest house, or tree house, we’ve got you covered.
                         </p>
                     </div>
@@ -220,10 +312,12 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="row mt-5 mt-lg-0">
                         <div class="col-sm-6 p-3 d-flex justify-content-center justify-content-lg-end">
-                            <img src="https://ehotelservice.online/development/HotelSona/images/about-1.jpg" alt="about resmi">
+                            <img src="https://ehotelservice.online/development/HotelSona/images/about-1.jpg"
+                                alt="about resmi">
                         </div>
                         <div class="col-sm-6 p-3 d-flex justify-content-center justify-content-lg-end">
-                            <img src="https://ehotelservice.online/development/HotelSona/images/about-2.jpg" alt="about resmi">
+                            <img src="https://ehotelservice.online/development/HotelSona/images/about-2.jpg"
+                                alt="about resmi">
                         </div>
                     </div>
                 </div>

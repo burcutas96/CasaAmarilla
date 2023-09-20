@@ -265,7 +265,7 @@ a{
     color: var(--black);
 } 
 
-#reservation .form-control{
+/* #reservation .form-control{
     width: 330px;
     height: 4.5rem;
     font-size: 1.5rem;
@@ -274,7 +274,48 @@ a{
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
     display: inline-block !important;
     transition: all .4s;
+} */
+
+
+
+/* Yeni kodlar aşağıda */
+#reservation .form-control{
+    width: 330px;
+    height: 8rem;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
+    display: inline-block !important;
+    transition: all .4s;
 }
+
+#reservation .form-control:hover,
+.dateInput:hover #checkIn{ 
+    background-color: #f3f4f5;
+}
+
+#reservation .dateInput label{
+    position: absolute;
+    top: 17px; 
+    left: 50px;
+    color: #6c707a; 
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+#reservation .checkInDate,
+#reservation .checkOutDate{
+    position: absolute;
+    bottom: 16px;
+    left: 50px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--black);
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
+/* Yeni kodlar bitti */
 
 #reservation .form-control:focus{
     border: 2px solid var(--halloween);
@@ -340,8 +381,8 @@ a{
 
 .dateInput i{
     position: absolute;
-    height: 4.5rem;
-    width: 4rem;
+    height: 8rem;
+    width: 5.3rem;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
@@ -356,7 +397,7 @@ a{
 }
 
 .dateInput .date-icon {
-    right: 4rem;
+    right: 5.3rem;
 }
 
 .dateInput .clear-icon{
@@ -377,7 +418,6 @@ a{
     transition: opacity .3s;
     position: absolute;
     top: 6rem;
-    left: 9px;
     padding: 1.5rem 2rem;
     border-radius: 10px;
     background-color: var(--white);

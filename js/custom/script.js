@@ -88,44 +88,110 @@ document.addEventListener("DOMContentLoaded", function () {
     const clearIconElements = document.querySelectorAll('.dateInput .clear-icon');
     const dateIconElements = document.querySelectorAll('.dateInput .date-icon');
     const datePickerElements = document.querySelectorAll('.datePicker');
+    var checkInDateElement = document.querySelector('.checkInDate');
+    var checkOutDateElement = document.querySelector('.checkOutDate');
+    var checkInElement = document.getElementById('checkIn');
+    var checkOutElement = document.getElementById('checkOut');
+    const today = new Date();
 
     dateIconElements.forEach(function (dateIconElement, index) {
-        const inputField = datePickerElements[index];
-        const today = new Date();
-        const datepicker = new Pikaday({
-            field: inputField,
-            minDate: today,
-            // date formatını aşağıda ayarladım.
-            toString(date) {
-                const day = date.getDate();
-                const month = date.toLocaleString('default', { month: 'long' });
-                const year = date.getFullYear();
-                return `${day} ${month}, ${year}`;
-            },
-        });
-        dateIconElement.addEventListener('click', () => {
-            if (datepicker.isVisible()) {
-                datepicker.hide();
-            } else {
-                datepicker.show();
-            }
-        });
-        const clearIconElement = clearIconElements[index];
-        clearIconElement.addEventListener('click', () => {
-            inputField.value = '';
-        });
+        var inputField = datePickerElements[index];
+        if (index === 0) {
+            const datepicker = new Pikaday({
+                field: inputField,
+                minDate: today,
+                // date formatını aşağıda ayarladım.
+                toString(date) {
+                    const day = date.toLocaleString('en', { weekday: 'short' }); 
+                    const year = date.getFullYear().toString().slice(-2); 
+                    const month = ('0' + (date.getMonth() + 1)).slice(-2); 
+                    const dayOfMonth = ('0' + date.getDate()).slice(-2); 
+                    return `${day}, ${dayOfMonth}.${month}.${year}`;
+                },
+                onSelect: function (date) {
+                    var selectedDate = datepicker.toString();
+                    checkInElement.value = '';
+                    checkInDateElement.textContent = selectedDate;
+                }
+            });
+
+            dateIconElement.addEventListener('click', () => {
+                if (datepicker.isVisible()) {
+                    datepicker.hide();
+                } else {
+                    datepicker.show();
+                }
+            });
+            const clearIconElement = clearIconElements[index];
+            clearIconElement.addEventListener('click', () => {
+                checkInDateElement.textContent = '';
+            });
+
+        } else if (index === 1){
+            const datepicker = new Pikaday({
+                field: inputField,
+                minDate: today,
+                // date formatını aşağıda ayarladım.
+                toString(date) {
+                    const day = date.toLocaleString('en', { weekday: 'short' }); 
+                    const year = date.getFullYear().toString().slice(-2); 
+                    const month = ('0' + (date.getMonth() + 1)).slice(-2); 
+                    const dayOfMonth = ('0' + date.getDate()).slice(-2); 
+                    return `${day}, ${dayOfMonth}.${month}.${year}`;
+                },
+                onSelect: function (date) {
+                    var selectedDate = datepicker.toString();
+                    checkOutElement.value = '';
+                    checkOutDateElement.textContent = selectedDate;
+                }
+            });
+
+            dateIconElement.addEventListener('click', () => {
+                if (datepicker.isVisible()) {
+                    datepicker.hide();
+                } else {
+                    datepicker.show();
+                }
+            });
+            const clearIconElement = clearIconElements[index];
+            clearIconElement.addEventListener('click', () => {
+                inputField.value = '';
+            });
+        }
     });
+
+
+
+    /* Bugünün tarihini, rezervasyon kısmındaki .checkInDate elemanının içerisine yazdırıyoruz. */
+    var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    var formattedDate1 = daysOfWeek[today.getDay()] + ', ' +
+        ('0' + today.getDate()).slice(-2) + '.' +
+        ('0' + (today.getMonth() + 1)).slice(-2) + '.' +
+        ('' + today.getFullYear()).slice(-2);
+    document.querySelector('.checkInDate').innerHTML = formattedDate1;
+
+
+
+    /* Yarının tarihini, rezervasyon kısmındaki .checkOutDate elemanının içerisine yazdırıyoruz. */
+    var tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    var formattedDate2 = daysOfWeek[tomorrow.getDay()] + ', ' +
+        ('0' + tomorrow.getDate()).slice(-2) + '.' +
+        ('0' + (tomorrow.getMonth() + 1)).slice(-2) + '.' +
+        ('' + tomorrow.getFullYear()).slice(-2);
+    document.querySelector('.checkOutDate').innerHTML = formattedDate2;
 
 
 
     /* Aşağıdaki fonksiyonla reservasyon kısmındaki guests and rooms açılır menüsünü, sayfada herhangi bir yere tıklayınca kapanmasını sağlıyoruz. */
     /* Ve tabi açılır menüye ait olan butona veya açılır menüye tıklayınca dropdown'ın kapatılmasını aşağıdaki koşullarla engelliyoruz. */
     window.onclick = function (event) {
-        if (!event.target.matches('#guests') && !event.target.matches('.guestsform') 
-            && !event.target.matches('.guestsform div') 
+        if (!event.target.matches('#guests') && !event.target.matches('.guestsform')
+            && !event.target.matches('.guestsform div')
             && !event.target.matches('.guestsform label')
-            && !event.target.matches('.guestsform input')) 
-            {
+            && !event.target.matches('.guestsform input')) {
             var guestsform = document.querySelector(".guestsform");
             const guestsformParentDiv = guestsform.parentElement;
 
