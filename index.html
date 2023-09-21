@@ -11,10 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css"
-        type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css" type="text/css">
     <link rel="icon" href="/images/s-letter-icon-2.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <script src="js/custom/jquery-3.7.1.min.js"></script>
@@ -147,7 +145,9 @@
 
                 <div class="col-md-6 col-xl-3 d-flex justify-content-center position-relative mt-5 mt-xl-0">
                     <div class="position-relative">
-                        <button id="guests" type="text" class="form-control" onclick="GuestsForm()">Guests and Rooms
+                        <button id="guests" type="text" class="form-control" onclick="GuestsForm()">
+                            <div class="button-text">Guests and Rooms</div>
+                            <span class="guestsandrooms"></span>
                             <i class="bi bi-caret-right-fill right-icon"
                                 onclick="event.stopPropagation(); GuestsForm();"></i>
                             <i class="bi bi-caret-down-fill down-icon d-none"
@@ -156,12 +156,12 @@
                     </div>
                     <div class="guestsform">
                         <div class="d-flex align-items-center justify-content-between">
-                            <label for="adults">Adults</label>
+                            <label>Adults</label>
                             <div>
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
-                                <input class="input-number" type="text" value="2">
+                                <input id="adults" class="input-number" type="text" value="2">
                                 <button type="button" class="btn" onclick="IncreaseButton(this)">
                                     <i class="bi bi-plus counter-button"></i>
                                 </button>
@@ -169,12 +169,12 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
-                            <label for="adults">Children</label>
+                            <label>Children</label>
                             <div>
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 0)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
-                                <input class="input-number" type="text" value="0">
+                                <input id="children" class="input-number" type="text" value="0">
                                 <button type="button" class="btn" onclick="IncreaseButton(this)">
                                     <i class="bi bi-plus counter-button"></i>
                                 </button>
@@ -182,12 +182,12 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
-                            <label for="adults">Rooms</label>
+                            <label>Rooms</label>
                             <div>
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
-                                <input class="input-number" type="text" value="1">
+                                <input id="rooms" class="input-number" type="text" value="1">
                                 <button type="button" class="btn" onclick="IncreaseButton(this)">
                                     <i class="bi bi-plus counter-button"></i>
                                 </button>
@@ -203,86 +203,6 @@
         </div>
     </section>
 
-
-
-    <!-- Reservation -->
-    <!-- <section id="reservation" class="section-padding">
-        <div class="container-lg">
-            <div class="reservation-title d-flex justify-content-center">
-                <span>Booking Your Hotel</span>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
-                    <div class="dateInput">
-                        <input type="text" class="form-control datePicker" placeholder="Check In" readonly>
-                        <i class="fas fa-calendar-days date-icon"></i>
-                        <i class="fas fa-times clear-icon"></i>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-md-0">
-                    <div class="dateInput">
-                        <input type="text" class="form-control datePicker" placeholder="Check Out" readonly>
-                        <i class="fas fa-calendar-days date-icon"></i>
-                        <i class="fas fa-times clear-icon"></i>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xl-3 d-flex justify-content-center position-relative mt-5 mt-xl-0">
-                    <div class="position-relative">
-                        <button id="guests" type="text" class="form-control" onclick="GuestsForm()">Guests and Rooms
-                            <i class="bi bi-caret-right-fill right-icon" onclick="event.stopPropagation(); GuestsForm();"></i>
-                            <i class="bi bi-caret-down-fill down-icon d-none" onclick="event.stopPropagation(); GuestsForm();"></i>
-                        </button>
-                    </div>
-                    <div class="guestsform">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <label for="adults">Adults</label>
-                            <div>
-                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
-                                    <i class="bi bi-dash counter-button"></i>
-                                </button>
-                                <input class="input-number" type="text" value="2">
-                                <button type="button" class="btn" onclick="IncreaseButton(this)">
-                                    <i class="bi bi-plus counter-button"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mt-3">
-                            <label for="adults">Children</label>
-                            <div>
-                                <button type="button" class="btn" onclick="DecreaseButton(this, 0)">
-                                    <i class="bi bi-dash counter-button"></i>
-                                </button>
-                                <input class="input-number" type="text" value="0">
-                                <button type="button" class="btn" onclick="IncreaseButton(this)">
-                                    <i class="bi bi-plus counter-button"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mt-3">
-                            <label for="adults">Rooms</label>
-                            <div>
-                                <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
-                                    <i class="bi bi-dash counter-button"></i>
-                                </button>
-                                <input class="input-number" type="text" value="1">
-                                <button type="button" class="btn" onclick="IncreaseButton(this)">
-                                    <i class="bi bi-plus counter-button"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-xl-0">
-                    <button type="submit" class="btn form-control reservation-button">Reservation</button>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 
     <!-- AboutUs -->

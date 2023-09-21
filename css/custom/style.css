@@ -265,25 +265,10 @@ a{
     color: var(--black);
 } 
 
-/* #reservation .form-control{
-    width: 330px;
-    height: 4.5rem;
-    font-size: 1.5rem;
-    padding-left: 1.5rem;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
-    display: inline-block !important;
-    transition: all .4s;
-} */
-
-
-
-/* Yeni kodlar aşağıda */
 #reservation .form-control{
     width: 330px;
     height: 8rem;
     font-size: 1.5rem;
-    padding-left: 1.5rem;
     border: 2px solid transparent;
     box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
     display: inline-block !important;
@@ -291,11 +276,13 @@ a{
 }
 
 #reservation .form-control:hover,
-.dateInput:hover #checkIn{ 
-    background-color: #f3f4f5;
+.dateInput:hover #checkIn, 
+.dateInput:hover #checkOut{ 
+    background-color: #f0f0f0;
 }
 
-#reservation .dateInput label{
+#reservation .dateInput label,
+#guests .button-text{
     position: absolute;
     top: 17px; 
     left: 50px;
@@ -305,7 +292,8 @@ a{
 }
 
 #reservation .checkInDate,
-#reservation .checkOutDate{
+#reservation .checkOutDate,
+.guestsandrooms{
     position: absolute;
     bottom: 16px;
     left: 50px;
@@ -315,7 +303,9 @@ a{
     font-family: 'Noto Sans Display', sans-serif;
 }
 
-/* Yeni kodlar bitti */
+.guestsandrooms:hover{
+    cursor: text;
+}
 
 #reservation .form-control:focus{
     border: 2px solid var(--halloween);
@@ -340,8 +330,9 @@ a{
 #reservation .down-icon{
     font-size: 1.5rem;
     position: absolute;
-    top: 13px;
-    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
 }
 
 #reservation .right-icon{
@@ -409,7 +400,7 @@ a{
 #guests{
     text-align: left;
     font-size: 1.6rem !important;
-}
+} 
 
 .guestsform{
     opacity: 0;
@@ -417,7 +408,7 @@ a{
     display: none;
     transition: opacity .3s;
     position: absolute;
-    top: 6rem;
+    top: 8.5rem;
     padding: 1.5rem 2rem;
     border-radius: 10px;
     background-color: var(--white);

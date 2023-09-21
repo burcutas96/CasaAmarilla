@@ -82,106 +82,81 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    
+    /* Verdiğimiz tarihi "Wed, 22.09.23" şeklinde formatlayan bir fonksiyon hazırladık.*/
+    function formatDate(date) {
+        var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    /* Pikaday kütüphanesiyle tarih seçici oluşturduk. Ve temizleme ikonlarıyla tarih ikonlarını,
-    hemen yanlarındaki tarih seçiciyle ilişkilendirdik. */
-    const clearIconElements = document.querySelectorAll('.dateInput .clear-icon');
-    const dateIconElements = document.querySelectorAll('.dateInput .date-icon');
-    const datePickerElements = document.querySelectorAll('.datePicker');
-    var checkInDateElement = document.querySelector('.checkInDate');
-    var checkOutDateElement = document.querySelector('.checkOutDate');
-    var checkInElement = document.getElementById('checkIn');
-    var checkOutElement = document.getElementById('checkOut');
-    const today = new Date();
-
-    dateIconElements.forEach(function (dateIconElement, index) {
-        var inputField = datePickerElements[index];
-        if (index === 0) {
-            const datepicker = new Pikaday({
-                field: inputField,
-                minDate: today,
-                // date formatını aşağıda ayarladım.
-                toString(date) {
-                    const day = date.toLocaleString('en', { weekday: 'short' }); 
-                    const year = date.getFullYear().toString().slice(-2); 
-                    const month = ('0' + (date.getMonth() + 1)).slice(-2); 
-                    const dayOfMonth = ('0' + date.getDate()).slice(-2); 
-                    return `${day}, ${dayOfMonth}.${month}.${year}`;
-                },
-                onSelect: function (date) {
-                    var selectedDate = datepicker.toString();
-                    checkInElement.value = '';
-                    checkInDateElement.textContent = selectedDate;
-                }
-            });
-
-            dateIconElement.addEventListener('click', () => {
-                if (datepicker.isVisible()) {
-                    datepicker.hide();
-                } else {
-                    datepicker.show();
-                }
-            });
-            const clearIconElement = clearIconElements[index];
-            clearIconElement.addEventListener('click', () => {
-                checkInDateElement.textContent = '';
-            });
-
-        } else if (index === 1){
-            const datepicker = new Pikaday({
-                field: inputField,
-                minDate: today,
-                // date formatını aşağıda ayarladım.
-                toString(date) {
-                    const day = date.toLocaleString('en', { weekday: 'short' }); 
-                    const year = date.getFullYear().toString().slice(-2); 
-                    const month = ('0' + (date.getMonth() + 1)).slice(-2); 
-                    const dayOfMonth = ('0' + date.getDate()).slice(-2); 
-                    return `${day}, ${dayOfMonth}.${month}.${year}`;
-                },
-                onSelect: function (date) {
-                    var selectedDate = datepicker.toString();
-                    checkOutElement.value = '';
-                    checkOutDateElement.textContent = selectedDate;
-                }
-            });
-
-            dateIconElement.addEventListener('click', () => {
-                if (datepicker.isVisible()) {
-                    datepicker.hide();
-                } else {
-                    datepicker.show();
-                }
-            });
-            const clearIconElement = clearIconElements[index];
-            clearIconElement.addEventListener('click', () => {
-                inputField.value = '';
-            });
-        }
-    });
+        var formattedDate = daysOfWeek[date.getDay()] + ', ' +
+            ('0' + date.getDate()).slice(-2) + '.' +
+            ('0' + (date.getMonth() + 1)).slice(-2) + '.' +
+            ('' + date.getFullYear()).slice(-2);
+        
+        return formattedDate;
+    }
 
 
 
     /* Bugünün tarihini, rezervasyon kısmındaki .checkInDate elemanının içerisine yazdırıyoruz. */
-    var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var today = new Date();
+    document.querySelector('.checkInDate').innerHTML = formatDate(today);
+    
 
-    var formattedDate1 = daysOfWeek[today.getDay()] + ', ' +
-        ('0' + today.getDate()).slice(-2) + '.' +
-        ('0' + (today.getMonth() + 1)).slice(-2) + '.' +
-        ('' + today.getFullYear()).slice(-2);
-    document.querySelector('.checkInDate').innerHTML = formattedDate1;
-
-
-
+    
     /* Yarının tarihini, rezervasyon kısmındaki .checkOutDate elemanının içerisine yazdırıyoruz. */
     var tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
+    document.querySelector('.checkOutDate').innerHTML = formatDate(tomorrow);
 
-    var formattedDate2 = daysOfWeek[tomorrow.getDay()] + ', ' +
-        ('0' + tomorrow.getDate()).slice(-2) + '.' +
-        ('0' + (tomorrow.getMonth() + 1)).slice(-2) + '.' +
-        ('' + tomorrow.getFullYear()).slice(-2);
-    document.querySelector('.checkOutDate').innerHTML = formattedDate2;
+
+
+    /* Pikaday kütüphanesiyle tarih seçici oluşturduk. Ve temizleme ikonlarıyla tarih ikonlarını,
+    hemen yanlarındaki tarih seçiciyle ilişkilendirdik. */
+    const clearIcons = document.querySelectorAll('.dateInput .clear-icon');
+    const dateIcons = document.querySelectorAll('.dateInput .date-icon');
+    const datePickers = document.querySelectorAll('.datePicker');
+
+    var checkInDate = document.querySelector('.checkInDate');
+    var checkOutDate = document.querySelector('.checkOutDate');
+    var checkIn = document.getElementById('checkIn');
+    var checkOut = document.getElementById('checkOut');
+
+    createDatePicker(datePickers[0], checkInDate, checkIn, today, today, clearIcons[0], dateIcons[0]);
+    createDatePicker(datePickers[1], checkOutDate, checkOut, today, tomorrow, clearIcons[1], dateIcons[1]);
+
+    function createDatePicker(inputField, dateDisplayElement, dateInputElement, minimumDate, 
+            todayOrTomorrow, clearIconElement, dateIconElement){
+        const datePicker = new Pikaday({
+            field: inputField,
+            minDate: minimumDate,
+            // date formatını aşağıda ayarladım.
+            toString(date) {
+                const day = date.toLocaleString('en', { weekday: 'short' }); 
+                const year = date.getFullYear().toString().slice(-2); 
+                const month = ('0' + (date.getMonth() + 1)).slice(-2); 
+                const dayOfMonth = ('0' + date.getDate()).slice(-2); 
+                return `${day}, ${dayOfMonth}.${month}.${year}`;
+            },
+            onSelect: function (date) {
+                var selectedDate = datePicker.toString();
+                dateInputElement.value = '';
+                dateDisplayElement.textContent = selectedDate;
+            }
+        });
+
+        clearIconElement.addEventListener('click', () => {
+            dateDisplayElement.textContent = formatDate(todayOrTomorrow);
+        });
+
+        dateIconElement.addEventListener('click', () => {
+            if (datePicker.isVisible()) {
+                datePicker.hide();
+            } else {
+                datePicker.show();
+            }
+        });
+        return datePicker;
+    }
 
 
 
@@ -207,6 +182,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+
+
+    /* Başlangıçtaki Guests and Rooms değerlerini yazdırıyoruz. */
+    var guestsandrooms = document.querySelector('.guestsandrooms');
+
+    var adults = parseInt(document.getElementById('adults').value);
+    var children = parseInt(document.getElementById('children').value);
+    var rooms = parseInt(document.getElementById('rooms').value);
+
+    guestsandrooms.innerHTML = `${adults + children} Guests, ${rooms} Rooms`;
+
 });
 
 
@@ -243,10 +230,28 @@ function DecreaseButton(button, minValue) {
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 
+    var guestsandrooms = document.querySelector('.guestsandrooms');
+
+    var adults = parseInt(document.getElementById('adults').value);
+    var children = parseInt(document.getElementById('children').value);
+    var rooms = parseInt(document.getElementById('rooms').value);
+
     let currentValue = parseInt(inputElement.value);
     if (!isNaN(currentValue) && currentValue > minValue) {
         currentValue--;
         inputElement.value = currentValue;
+
+        if(inputElement.id === 'adults'){
+            guestsandrooms.innerHTML = `${(adults - 1) + children} Guests, ${rooms} Rooms`;
+        }
+
+        if(inputElement.id === 'children'){
+            guestsandrooms.innerHTML = `${(children - 1) + adults} Guests, ${rooms} Rooms`;
+        }
+
+        if(inputElement.id === 'rooms'){
+            guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
+        }
     }
 }
 
@@ -259,10 +264,29 @@ function IncreaseButton(button) {
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
 
+    var guestsandrooms = document.querySelector('.guestsandrooms');
+
+    var adults = parseInt(document.getElementById('adults').value);
+    var children = parseInt(document.getElementById('children').value);
+    var rooms = parseInt(document.getElementById('rooms').value);
+
+
     let currentValue = parseInt(inputElement.value);
     if (!isNaN(currentValue) && currentValue >= 0 && currentValue < 99) {
         currentValue++;
         inputElement.value = currentValue;
+
+        if(inputElement.id === 'adults'){
+            guestsandrooms.innerHTML = `${currentValue + children} Guests, ${rooms} Rooms`;
+        }
+
+        if(inputElement.id === 'children'){
+            guestsandrooms.innerHTML = `${currentValue + adults} Guests, ${rooms} Rooms`;
+        }
+
+        if(inputElement.id === 'rooms'){
+            guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
+        }
     }
 }
 
