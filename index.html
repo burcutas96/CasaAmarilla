@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css" type="text/css">
-    <link rel="icon" href="/images/s-letter-icon-2.png" type="image/x-icon">
+    <link rel="icon" href="https://ehotelservice.online/development/HotelSona/images/s-letter-icon-2.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <script src="js/custom/jquery-3.7.1.min.js"></script>
 </head>
@@ -146,7 +146,7 @@
                 <div class="col-md-6 col-xl-3 d-flex justify-content-center position-relative mt-5 mt-xl-0">
                     <div class="position-relative">
                         <button id="guests" type="text" class="form-control" onclick="GuestsForm()">
-                            <div class="button-text">Guests and Rooms</div>
+                            <div class="button-text" onclick="event.stopPropagation(); GuestsForm()">Guests and Rooms</div>
                             <span class="guestsandrooms"></span>
                             <i class="bi bi-caret-right-fill right-icon"
                                 onclick="event.stopPropagation(); GuestsForm();"></i>

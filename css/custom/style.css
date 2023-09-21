@@ -285,7 +285,7 @@ a{
 #guests .button-text{
     position: absolute;
     top: 17px; 
-    left: 50px;
+    left: 35px;
     color: #6c707a; 
     cursor: pointer;
     font-size: 1.5rem;
@@ -296,7 +296,7 @@ a{
 .guestsandrooms{
     position: absolute;
     bottom: 16px;
-    left: 50px;
+    left: 35px;
     font-size: 1.6rem;
     font-weight: 600;
     color: var(--black);
@@ -669,19 +669,42 @@ a{
     }
 
     #reservation .form-control {
-        width: 235px;
+        width: 250px;
     }
 
     #reservation .reservation-button{
         font-size: 1.9rem;
+        height: 5.5rem;
     }
 
-    #reservation .right-icon, #reservation .down-icon {
+    #reservation .right-icon, 
+    #reservation .down-icon {
         font-size: 1.4rem;
     }
 
     .reservation-title{
         font-size: 3.5rem;
+    }
+
+    #reservation .dateInput label,
+    #guests .button-text,
+    #reservation .checkInDate,
+    #reservation .checkOutDate,
+    .guestsandrooms{
+        left: 27px;
+    }
+
+    #reservation .dateInput label, 
+    #guests .button-text {
+        font-size: 1.3rem;
+        top: 19px;
+    }
+
+    #reservation .checkInDate, 
+    #reservation .checkOutDate,
+    .guestsandrooms {
+        font-size: 1.4rem;
+        bottom: 19px;
     }
 
     .dateInput i{
@@ -810,11 +833,32 @@ a{
     #reservation .right-icon, 
     #reservation .down-icon {
         font-size: 1.3rem;
-        top: 14px;
+        right: 20px;
     }
 
     .reservation-title{
         font-size: 3.2rem;
+    }
+
+    #reservation .dateInput label,
+    #guests .button-text,
+    #reservation .checkInDate,
+    #reservation .checkOutDate,
+    .guestsandrooms{
+        left: 23px;
+    }
+
+    #reservation .dateInput label, 
+    #guests .button-text {
+        top: 18px;
+        font-size: 1.3rem;
+    }
+
+    #reservation .checkInDate, 
+    #reservation .checkOutDate,
+    .guestsandrooms {
+        font-size: 1.4rem;
+        bottom: 18px;
     }
 
     .dateInput i{
@@ -892,6 +936,7 @@ a{
 
     #reservation .reservation-button{
         font-size: 1.6rem;
+        height: 5rem;
     }
 
     #reservation .right-icon, 
@@ -902,6 +947,19 @@ a{
     .reservation-title{
         font-size: 2.8rem;
         text-align: center;
+    }
+
+    #reservation .dateInput label, 
+    #guests .button-text {
+        font-size: 1.2rem;
+        top: 21px;
+    }
+
+    #reservation .checkInDate, 
+    #reservation .checkOutDate,
+    .guestsandrooms {
+        font-size: 1.3rem;
+        bottom: 21px;
     }
 
     #guests{
