@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    
+
     /* Verdiğimiz tarihi "Wed, 22.09.23" şeklinde formatlayan bir fonksiyon hazırladık.*/
     function formatDate(date) {
         var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ('0' + date.getDate()).slice(-2) + '.' +
             ('0' + (date.getMonth() + 1)).slice(-2) + '.' +
             ('' + date.getFullYear()).slice(-2);
-        
+
         return formattedDate;
     }
 
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Bugünün tarihini, rezervasyon kısmındaki .checkInDate elemanının içerisine yazdırıyoruz. */
     var today = new Date();
     document.querySelector('.checkInDate').innerHTML = formatDate(today);
-    
 
-    
+
+
     /* Yarının tarihini, rezervasyon kısmındaki .checkOutDate elemanının içerisine yazdırıyoruz. */
     var tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
@@ -124,17 +124,17 @@ document.addEventListener("DOMContentLoaded", function () {
     createDatePicker(datePickers[0], checkInDate, checkIn, today, today, clearIcons[0], dateIcons[0]);
     createDatePicker(datePickers[1], checkOutDate, checkOut, today, tomorrow, clearIcons[1], dateIcons[1]);
 
-    function createDatePicker(inputField, dateDisplayElement, dateInputElement, minimumDate, 
-            todayOrTomorrow, clearIconElement, dateIconElement){
+    function createDatePicker(inputField, dateDisplayElement, dateInputElement, minimumDate,
+        todayOrTomorrow, clearIconElement, dateIconElement) {
         const datePicker = new Pikaday({
             field: inputField,
             minDate: minimumDate,
             // date formatını aşağıda ayarladım.
             toString(date) {
-                const day = date.toLocaleString('en', { weekday: 'short' }); 
-                const year = date.getFullYear().toString().slice(-2); 
-                const month = ('0' + (date.getMonth() + 1)).slice(-2); 
-                const dayOfMonth = ('0' + date.getDate()).slice(-2); 
+                const day = date.toLocaleString('en', { weekday: 'short' });
+                const year = date.getFullYear().toString().slice(-2);
+                const month = ('0' + (date.getMonth() + 1)).slice(-2);
+                const dayOfMonth = ('0' + date.getDate()).slice(-2);
                 return `${day}, ${dayOfMonth}.${month}.${year}`;
             },
             onSelect: function (date) {
@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!event.target.matches('#guests') && !event.target.matches('.guestsform')
             && !event.target.matches('.guestsform div')
             && !event.target.matches('.guestsform label')
+            && !event.target.matches('.guestsform button')
             && !event.target.matches('.guestsform input')) {
             var guestsform = document.querySelector(".guestsform");
             const guestsformParentDiv = guestsform.parentElement;
@@ -241,15 +242,15 @@ function DecreaseButton(button, minValue) {
         currentValue--;
         inputElement.value = currentValue;
 
-        if(inputElement.id === 'adults'){
+        if (inputElement.id === 'adults') {
             guestsandrooms.innerHTML = `${(adults - 1) + children} Guests, ${rooms} Rooms`;
         }
 
-        if(inputElement.id === 'children'){
+        if (inputElement.id === 'children') {
             guestsandrooms.innerHTML = `${(children - 1) + adults} Guests, ${rooms} Rooms`;
         }
 
-        if(inputElement.id === 'rooms'){
+        if (inputElement.id === 'rooms') {
             guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
         }
     }
@@ -263,30 +264,77 @@ function IncreaseButton(button) {
 
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
+    const guestsandrooms = document.querySelector('.guestsandrooms');
 
-    var guestsandrooms = document.querySelector('.guestsandrooms');
-
-    var adults = parseInt(document.getElementById('adults').value);
-    var children = parseInt(document.getElementById('children').value);
-    var rooms = parseInt(document.getElementById('rooms').value);
-
-
+    let adults = parseInt(document.getElementById('adults').value);
+    let children = parseInt(document.getElementById('children').value);
+    let rooms = parseInt(document.getElementById('rooms').value);
+    
     let currentValue = parseInt(inputElement.value);
-    if (!isNaN(currentValue) && currentValue >= 0 && currentValue < 99) {
+    let totalGuests;
+
+    if (!isNaN(currentValue) && currentValue >= 0 && currentValue < 49) {
+        
+        if (inputElement.id === 'adults') {
+            totalGuests = currentValue + children;
+            handleGuestsCountIncrease(inputElement.id, "children", totalGuests, guestsandrooms, currentValue, rooms, inputElement, parentDiv)
+        }
+
+        if (inputElement.id === 'children') {
+            totalGuests = currentValue + adults;
+            handleGuestsCountIncrease(inputElement.id, "adults", totalGuests, guestsandrooms, currentValue, rooms, inputElement, parentDiv)
+        }
+
+        if (inputElement.id === 'rooms') {
+            guestsandrooms = `${children + adults} Guests, ${currentValue} Rooms`;
+        }
+    }
+}
+
+
+
+function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests, valuesDisplayElement, currentValue, 
+        roomsValue, inputElement, parentDiv)
+    {
+    let clickButton = document.querySelector(`#${elementName} + div`);
+
+    if (totalGuests === 47){
         currentValue++;
         inputElement.value = currentValue;
+        valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
+        
+        let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
+        overlay.classList.remove('d-none');
+        overlay.classList.add('d-block');
+        clickButton.onclick = null;
+   
+        document.querySelector('#children + div button').style.cursor = "auto";
+        document.querySelector('#adults + div button').style.cursor = "auto";
+    
+        toggleCounterButton(elementName);
+        toggleCounterButton(siblingElementName);
 
-        if(inputElement.id === 'adults'){
-            guestsandrooms.innerHTML = `${currentValue + children} Guests, ${rooms} Rooms`;
-        }
+        overlay.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
 
-        if(inputElement.id === 'children'){
-            guestsandrooms.innerHTML = `${currentValue + adults} Guests, ${rooms} Rooms`;
-        }
+    }
+    else if (totalGuests < 48) {
+        currentValue++;
+        inputElement.value = currentValue;
+        valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
+    }
+}
 
-        if(inputElement.id === 'rooms'){
-            guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
-        }
+
+
+function toggleCounterButton(elementName){
+    let button = document.querySelector(`#${elementName} + div .bi-plus`);
+
+    if(button.classList.contains('counter-button')){
+        button.classList.remove('counter-button');
+        button.classList.add('disable-counter-button');
     }
 }
 

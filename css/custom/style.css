@@ -20,6 +20,7 @@ body{
     --shades: #9f9f9f;
     --vintage: #999999;
     --halloween: #DFA974;
+    --disabledHallowen: #e0c5a8;
     --summer: #edba87;
     --sky: #f8f7f7;
     --white: #FFFFFF;
@@ -41,6 +42,27 @@ a{
     letter-spacing: .2rem;
     border-bottom: 3px solid var(--halloween);
     font-weight: 600;
+}
+
+.overlay {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Overlay'in diğer öğelerin üzerine gelmesini sağlar */
+    cursor: auto;/* Overlay'e tıklamayı etkinleştirir */
+}
+
+.guestsform .disable-counter-button {
+    font-size: 2.523rem;
+    padding: 0.2rem 0.5rem;
+    border: 2px solid var(--disabledHallowen);
+    border-radius: 50%;
+    color: var(--forever);
+    cursor: auto;
 }
 
 .section-padding{

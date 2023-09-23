@@ -157,33 +157,40 @@
                     <div class="guestsform">
                         <div class="d-flex align-items-center justify-content-between">
                             <label>Adults</label>
-                            <div>
+                            <div class="d-flex align-items-center">
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
                                 <input id="adults" class="input-number" type="text" value="2">
-                                <button type="button" class="btn" onclick="IncreaseButton(this)">
-                                    <i class="bi bi-plus counter-button"></i>
-                                </button>
+                                <div class="position-relative d-inline-block" onclick="IncreaseButton(this)">
+                                    <button type="button" class="btn">
+                                        <i class="bi bi-plus counter-button"></i>
+                                    </button>
+                                    <div class="overlay d-none"></div>
+                                </div>
+                                
                             </div>
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <label>Children</label>
-                            <div>
+                            <div class="d-flex align-items-center">
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 0)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
                                 <input id="children" class="input-number" type="text" value="0">
-                                <button type="button" class="btn" onclick="IncreaseButton(this)">
-                                    <i class="bi bi-plus counter-button"></i>
-                                </button>
+                                <div class="position-relative d-inline-block" onclick="IncreaseButton(this)">
+                                    <button type="button" class="btn">
+                                        <i class="bi bi-plus counter-button"></i>
+                                    </button>
+                                    <div class="overlay d-none"></div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <label>Rooms</label>
-                            <div>
+                            <div class="d-flex align-items-center">
                                 <button type="button" class="btn" onclick="DecreaseButton(this, 1)">
                                     <i class="bi bi-dash counter-button"></i>
                                 </button>
