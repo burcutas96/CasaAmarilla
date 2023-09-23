@@ -244,16 +244,76 @@ function DecreaseButton(button, minValue) {
 
         if (inputElement.id === 'adults') {
             guestsandrooms.innerHTML = `${(adults - 1) + children} Guests, ${rooms} Rooms`;
+            handleGuestsCountDecrease(inputElement.id, "children", parentDiv);
         }
-
+        
         if (inputElement.id === 'children') {
             guestsandrooms.innerHTML = `${(children - 1) + adults} Guests, ${rooms} Rooms`;
+            handleGuestsCountDecrease(inputElement.id, "adults", parentDiv);
         }
 
         if (inputElement.id === 'rooms') {
             guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
+            handleRoomCountDecrease(parentDiv);
         }
     }
+}
+
+
+
+/* Guests and rooms açılır menüsündeki misafir sayısı, 48'i geçtiğinde adults ve children butonlarını pasif hâle 
+    getiriyoruz ancak bu input'larda bir eksiltme işlemi yapıldığında yani misafir sayısı 48'in altına düştüğünde bu butonları 
+    tekrar aktif hâle getirebilmek için aşağıdaki fonksiyonu kullanıyoruz.
+*/
+function handleGuestsCountDecrease(elementName, siblingElementName, parentDiv){
+
+    let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
+    let clickButton = document.querySelector(`#${elementName} + div`);
+    
+    let clickButtonSibling = document.querySelector(`#${siblingElementName} + div`);
+    let overlaySibling =  clickButtonSibling.parentElement.querySelector(`#${siblingElementName} + div .overlay`)
+
+    clickButton.onclick = function() {
+        IncreaseButton(this);
+    };
+
+    clickButtonSibling.onclick = function() {
+        IncreaseButton(this);
+    };
+
+    overlay.classList.remove('d-block');
+    overlay.classList.add('d-none');
+
+    overlaySibling.classList.remove('d-block');
+    overlaySibling.classList.add('d-none');
+    
+    cursorPointer(elementName);
+    cursorPointer(siblingElementName);
+
+    toggleDisableCounterButton(elementName);
+    toggleDisableCounterButton(siblingElementName);
+}
+
+
+
+/* Guests and rooms açılır menüsündeki oda sayısı, 6'yı geçtiğinde ilgili butonu pasif hâle getiriyoruz ancak bu 
+    input'ta bir eksiltme işlemi yapıldığında yani oda sayısı 6'nın altına düştüğünde bu butonu 
+    tekrar aktif hâle getirebilmek için aşağıdaki fonksiyonu kullanıyoruz.
+*/
+function handleRoomCountDecrease(parentDiv){
+    let elementName = "rooms";
+    let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
+    let clickButton = document.querySelector(`#${elementName} + div`);
+
+    clickButton.onclick = function() {
+        IncreaseButton(this);
+    };
+
+    overlay.classList.remove('d-block');
+    overlay.classList.add('d-none');
+
+    cursorPointer(elementName);
+    toggleDisableCounterButton(elementName);
 }
 
 
@@ -286,39 +346,43 @@ function IncreaseButton(button) {
         }
 
         if (inputElement.id === 'rooms') {
-            guestsandrooms = `${children + adults} Guests, ${currentValue} Rooms`;
+            totalGuests = children + adults;
+            handleRoomCountIncrease(totalGuests, guestsandrooms, currentValue, inputElement, parentDiv)
         }
     }
 }
 
 
 
+/* Guests and rooms açılır menüsündeki arttırma işleminde, misafir sayısı 48'den küçükse değeri arttırmaya devam ediyoruz ve bunu ilgili yere 
+    yazdırıyoruz. Ancak misafir sayısı 47'e eşitse arttırma işlemini son kez yapıyoruz. Ardından da adults ve children arttırma butonlarını pasif hâle getiriyoruz.
+*/
 function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests, valuesDisplayElement, currentValue, 
         roomsValue, inputElement, parentDiv)
     {
-    let clickButton = document.querySelector(`#${elementName} + div`);
-
+    
     if (totalGuests === 47){
         currentValue++;
         inputElement.value = currentValue;
         valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
         
         let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
+        let clickButton = document.querySelector(`#${elementName} + div`);
+
+        clickButton.onclick = null;
         overlay.classList.remove('d-none');
         overlay.classList.add('d-block');
-        clickButton.onclick = null;
-   
-        document.querySelector('#children + div button').style.cursor = "auto";
-        document.querySelector('#adults + div button').style.cursor = "auto";
-    
-        toggleCounterButton(elementName);
-        toggleCounterButton(siblingElementName);
 
         overlay.addEventListener("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
         });
-
+   
+        cursorAuto(elementName);
+        cursorAuto(siblingElementName);
+    
+        toggleCounterButton(elementName);
+        toggleCounterButton(siblingElementName);
     }
     else if (totalGuests < 48) {
         currentValue++;
@@ -329,6 +393,41 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
 
 
 
+/* Guests and rooms açılır menüsündeki arttırma işleminde, oda sayısı 7'den küçükse değeri arttırmaya devam ediyoruz ve bunu ilgili yere 
+    yazdırıyoruz. Ancak oda sayısı 6'ya eşitse arttırma işlemini son kez yapıyoruz. Ardından da bu arttırma butonunu pasif hâle getiriyoruz.
+*/
+function handleRoomCountIncrease(totalGuests, valuesDisplayElement, currentValue, inputElement, parentDiv){
+    
+    if((currentValue + 1) === 6){
+        currentValue++;
+        inputElement.value = currentValue;
+        valuesDisplayElement.innerHTML = `${totalGuests} Guests, ${currentValue} Rooms`;
+
+        let overlay = parentDiv.querySelector('#rooms + div .overlay');
+        let clickButton = document.querySelector(`#rooms + div`);
+
+        clickButton.onclick = null;
+        overlay.classList.remove('d-none');
+        overlay.classList.add('d-block');
+
+        overlay.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        cursorAuto("rooms");
+        toggleCounterButton("rooms");
+    }
+    else if ((currentValue + 1) < 7) {
+        currentValue++;
+        inputElement.value = currentValue;
+        valuesDisplayElement.innerHTML = `${totalGuests} Guests, ${currentValue} Rooms`;
+    }
+}
+
+
+
+/* Pasif hâle getirilen butonun class'ını, color ve border değerlerini değiştirdiğimiz bir class ile değiştiriyoruz. */
 function toggleCounterButton(elementName){
     let button = document.querySelector(`#${elementName} + div .bi-plus`);
 
@@ -336,6 +435,32 @@ function toggleCounterButton(elementName){
         button.classList.remove('counter-button');
         button.classList.add('disable-counter-button');
     }
+}
+
+
+
+/* Aktif hâle getirilen butonu eski hâline dönüştürüyoruz */
+function toggleDisableCounterButton(elementName){
+    let button = document.querySelector(`#${elementName} + div .bi-plus`);
+
+    if(button.classList.contains('disable-counter-button')){
+        button.classList.remove('disable-counter-button');
+        button.classList.add('counter-button');
+    }
+}
+
+
+
+/* Butonun imleç(cursor) stilini "auto" olarak ayarlar. */
+function cursorAuto(elementName) {
+    document.querySelector(`#${elementName} + div button`).style.cursor = "auto";
+}
+
+
+
+/* Butonun imleç(cursor) stilini "pointer" olarak ayarlar. */
+function cursorPointer(elementName) {
+    document.querySelector(`#${elementName} + div button`).style.cursor = "pointer";
 }
 
 
