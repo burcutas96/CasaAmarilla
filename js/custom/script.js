@@ -259,12 +259,7 @@ function GuestsForm() {
 function DecreaseButton(button, minValue) {
     event.stopPropagation();
 
-    let inputNumberElements = document.querySelectorAll('.input-number');
-    inputNumberElements.forEach(element => {
-        if (element.value == "") {
-            element.value = 1
-        }
-    });
+    checkIfInputNumberEnter();
 
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
@@ -317,12 +312,7 @@ function DecreaseButton(button, minValue) {
 function IncreaseButton(button) {
     event.stopPropagation();
 
-    let inputNumberElements = document.querySelectorAll('.input-number');
-    inputNumberElements.forEach(element => {
-        if (element.value == "") {
-            element.value = 1
-        }
-    });
+    checkIfInputNumberEnter();
 
     const parentDiv = button.parentElement;
     const inputElement = parentDiv.querySelector('.input-number');
@@ -351,23 +341,32 @@ function IncreaseButton(button) {
 
 
 
+/* GuestsAndRooms input'larında girilmeyen, boş bir değer varsa onun yerine "1" yazdırıyoruz. */
+function checkIfInputNumberEnter(){
+    let inputNumberElements = document.querySelectorAll('.input-number');
+    inputNumberElements.forEach(element => {
+        if (element.value == "") {
+            element.value = 1
+        }
+    });
+}
+
+
+
 /* Guests and rooms açılır menüsündeki arttırma işleminde, misafir sayısı 24'den küçükse değeri arttırmaya devam ediyoruz ve bunu ilgili yere 
     yazdırıyoruz. Ancak misafir sayısı 23'e eşitse arttırma işlemini son kez yapıyoruz. Ardından da adults ve children arttırma butonlarını pasif hâle getiriyoruz.
 */
 function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests, valuesDisplayElement, currentValue,
     roomsValue, inputElement, parentDiv) {
 
-    if (totalGuests === 23) {
+    if (totalGuests === 23 || totalGuests < 24) {
         currentValue++;
         inputElement.value = currentValue;
         valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
 
-        executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
-    }
-    else if (totalGuests < 24) {
-        currentValue++;
-        inputElement.value = currentValue;
-        valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
+        if(totalGuests === 23){
+            executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
+        }
     }
     else {
         let siblingElementNameValue = parseInt(document.querySelector(`#${siblingElementName}`).value);
@@ -389,9 +388,7 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
 
 
 
-/* Guests and rooms açılır menüsündeki arttırma işleminde, oda sayısı 7'den küçükse değeri arttırmaya devam ediyoruz ve bunu ilgili yere 
-    yazdırıyoruz. Ancak oda sayısı 6'ya eşitse arttırma işlemini son kez yapıyoruz. Ardından da bu arttırma butonunu pasif hâle getiriyoruz.
-*/
+/* Guests and rooms açılır menüsündeki arttırma işlemini aşağıdaki belirli kurallara göre yapıyoruz. */
 function handleRoomCountIncrease(totalGuests, valuesDisplayElement, currentValue, inputElement) {
 
     if (currentValue >= 6 || currentValue === 5) {
@@ -500,6 +497,9 @@ function showOverlayRooms() {
 
 
 
+/* Rooms butonundaki tıklama olayını tekrar aktif hâle getirip tıklamayı engellemek 
+    için oluşturulan div'in display özelliğini none yaptık. 
+*/
 function hideOverlayRooms(elementName){
     let overlay = document.querySelector(`#${elementName} + div .overlay`);
     let clickButton = document.querySelector(`#${elementName} + div`);
@@ -514,6 +514,9 @@ function hideOverlayRooms(elementName){
 
 
 
+/* Guests butonlarındaki tıklama olayını tekrar aktif hâle getirip tıklamayı engellemek 
+    için oluşturulan div'lerin display özellilerini none yaptık. 
+*/
 function hideOverlayGuests(elementName, siblingElementName, parentDiv){
     let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
     let clickButton = document.querySelector(`#${elementName} + div`);
@@ -562,20 +565,21 @@ function toggleDisableCounterButton(elementName) {
 
 
 
-/* Butonun imleç(cursor) stilini "auto" olarak ayarlar. */
 function cursorAuto(elementName) {
     document.querySelector(`#${elementName} + div button`).style.cursor = "auto";
 }
 
 
 
-/* Butonun imleç(cursor) stilini "pointer" olarak ayarlar. */
 function cursorPointer(elementName) {
     document.querySelector(`#${elementName} + div button`).style.cursor = "pointer";
 }
 
 
 
+/* GuestsAndRooms kısmındaki input'lara giriş yapıldıktan sonra enter 
+    tuşuna basıldığı taktirde o anki değerleri ekrana yazdıran fonksiyonu tetikliyoruz. 
+*/
 function checkEnterKey(event, input) {
     if (event.key === 'Enter') {
         showCurrentValue(input);
