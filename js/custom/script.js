@@ -198,15 +198,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* Başlangıçtaki Guests and Rooms değerlerini yazdırıyoruz. */
-    var guestsandrooms = document.querySelector('.guestsandrooms');
-
     var adults = parseInt(document.getElementById('adults').value);
     var children = parseInt(document.getElementById('children').value);
     var rooms = parseInt(document.getElementById('rooms').value);
 
+    var guestsandrooms = document.querySelector('.guestsandrooms');
     guestsandrooms.innerHTML = `${adults + children} Guests, ${rooms} Rooms`;
 
 
+
+    /* Input-number elemanlarından birine odaklanmışken sayfanın herhangi bir 
+        yerine tıklanırsa input'ların o anki değerleriyle işlem yapılmasını sağlıyoruz.
+    */
     let inputNumberElements = [
         document.getElementById("rooms"),
         document.getElementById("adults"),
@@ -286,7 +289,7 @@ function DecreaseButton(button, minValue) {
                 totalGuests = parseInt(inputElement.value) + children;
             }
             if (totalGuests != 24) {
-                handleGuestsCountDecrease(inputElement.id, "children", parentDiv);
+                executeEnableButtonActionsForGuests(inputElement.id, "children", parentDiv);
             }
             guestsandrooms.innerHTML = `${totalGuests} Guests, ${rooms} Rooms`;
         }
@@ -297,73 +300,15 @@ function DecreaseButton(button, minValue) {
                 totalGuests = parseInt(inputElement.value) + adults;
             }
             if (totalGuests != 24) {
-                handleGuestsCountDecrease(inputElement.id, "adults", parentDiv);
+                executeEnableButtonActionsForGuests(inputElement.id, "adults", parentDiv);
             }
             guestsandrooms.innerHTML = `${totalGuests} Guests, ${rooms} Rooms`;
         }
         else {
             guestsandrooms.innerHTML = `${children + adults} Guests, ${currentValue} Rooms`;
-            handleRoomCountDecrease();
+            executeEnableButtonActionsForRooms();
         }
     }
-}
-
-
-
-/* Guests and rooms açılır menüsündeki misafir sayısı, 24'ü geçtiğinde adults ve children butonlarını pasif hâle 
-    getiriyoruz ancak bu input'larda bir eksiltme işlemi yapıldığında yani misafir sayısı 24'ün altına düştüğünde 
-    bu butonları tekrar aktif hâle getirebilmek için aşağıdaki fonksiyonu kullanıyoruz.
-*/
-function handleGuestsCountDecrease(elementName, siblingElementName, parentDiv) {
-
-    let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
-    let clickButton = document.querySelector(`#${elementName} + div`);
-
-    let clickButtonSibling = document.querySelector(`#${siblingElementName} + div`);
-    let overlaySibling = clickButtonSibling.parentElement.querySelector(`#${siblingElementName} + div .overlay`)
-
-    clickButton.onclick = function () {
-        IncreaseButton(this);
-    };
-
-    clickButtonSibling.onclick = function () {
-        IncreaseButton(this);
-    };
-
-    overlay.classList.remove('d-block');
-    overlay.classList.add('d-none');
-
-    overlaySibling.classList.remove('d-block');
-    overlaySibling.classList.add('d-none');
-
-    cursorPointer(elementName);
-    cursorPointer(siblingElementName);
-
-    toggleDisableCounterButton(elementName);
-    toggleDisableCounterButton(siblingElementName);
-
-}
-
-
-
-/* Guests and rooms açılır menüsündeki oda sayısı, 6'yı geçtiğinde ilgili butonu pasif hâle getiriyoruz ancak bu 
-    input'ta bir eksiltme işlemi yapıldığında yani oda sayısı 6'nın altına düştüğünde bu butonu 
-    tekrar aktif hâle getirebilmek için aşağıdaki fonksiyonu kullanıyoruz.
-*/
-function handleRoomCountDecrease() {
-    let elementName = "rooms";
-    let overlay = document.querySelector(`#${elementName} + div .overlay`);
-    let clickButton = document.querySelector(`#${elementName} + div`);
-
-    clickButton.onclick = function () {
-        IncreaseButton(this);
-    };
-
-    overlay.classList.remove('d-block');
-    overlay.classList.add('d-none');
-
-    cursorPointer(elementName);
-    toggleDisableCounterButton(elementName);
 }
 
 
@@ -417,12 +362,7 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
         inputElement.value = currentValue;
         valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
 
-        showOverlay(elementName, siblingElementName, parentDiv);
-        cursorAuto(elementName);
-        cursorAuto(siblingElementName);
-
-        toggleCounterButton(elementName);
-        toggleCounterButton(siblingElementName);
+        executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
     }
     else if (totalGuests < 24) {
         currentValue++;
@@ -432,25 +372,13 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
     else {
         let siblingElementNameValue = parseInt(document.querySelector(`#${siblingElementName}`).value);
         if (siblingElementNameValue === 24) {
-            
+
             inputElement.value = 0;
-            showOverlay(elementName, siblingElementName, parentDiv);
-
-            cursorAuto(elementName);
-            cursorAuto(siblingElementName);
-
-            toggleCounterButton(elementName);
-            toggleCounterButton(siblingElementName);
+            executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
         }
-        else if(siblingElementNameValue === 23){
+        else if (siblingElementNameValue === 23) {
             inputElement.value = 1;
-            showOverlay(elementName, siblingElementName, parentDiv);
-
-            cursorAuto(elementName);
-            cursorAuto(siblingElementName);
-
-            toggleCounterButton(elementName);
-            toggleCounterButton(siblingElementName);
+            executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
         }
         else {
             inputElement.value = 1;
@@ -464,23 +392,10 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
 /* Guests and rooms açılır menüsündeki arttırma işleminde, oda sayısı 7'den küçükse değeri arttırmaya devam ediyoruz ve bunu ilgili yere 
     yazdırıyoruz. Ancak oda sayısı 6'ya eşitse arttırma işlemini son kez yapıyoruz. Ardından da bu arttırma butonunu pasif hâle getiriyoruz.
 */
-function handleRoomCountIncrease(totalGuests, valuesDisplayElement, currentValue, inputElement, parentDiv) {
+function handleRoomCountIncrease(totalGuests, valuesDisplayElement, currentValue, inputElement) {
 
-    if (currentValue >= 6 || currentValue === 5){
-        let overlay = parentDiv.querySelector('#rooms + div .overlay');
-        let clickButton = document.querySelector(`#rooms + div`);
-
-        clickButton.onclick = null;
-        overlay.classList.remove('d-none');
-        overlay.classList.add('d-block');
-
-        overlay.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-
-        cursorAuto("rooms");
-        toggleCounterButton("rooms");
+    if (currentValue >= 6 || currentValue === 5) {
+        executeDisableButtonActionsForRooms();
     }
     if (currentValue === 5 || currentValue < 6) {
         currentValue++;
@@ -491,7 +406,55 @@ function handleRoomCountIncrease(totalGuests, valuesDisplayElement, currentValue
 
 
 
-function showOverlay(elementName, siblingElementName, parentDiv) {
+/* Guests bölümünde disable hâle getirilecek olan butonlar için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
+function executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv) {
+    showOverlayGuests(elementName, siblingElementName, parentDiv);
+
+    cursorAuto(elementName);
+    cursorAuto(siblingElementName);
+
+    toggleCounterButton(elementName);
+    toggleCounterButton(siblingElementName);
+}
+
+
+
+/* Rooms bölümünde disable hâle getirilecek olan buton için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
+function executeDisableButtonActionsForRooms(){
+    showOverlayRooms();
+    cursorAuto("rooms");
+    toggleCounterButton("rooms");
+}
+
+
+
+/* Rooms bölümünde etkinleştirilecek olan buton için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
+function executeEnableButtonActionsForRooms(){
+    let elementName = "rooms";
+    hideOverlayRooms(elementName);
+    cursorPointer(elementName);
+    toggleDisableCounterButton(elementName);
+}
+
+
+
+/* Guests bölümünde etkinleştirilecek olan butonlar için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
+function executeEnableButtonActionsForGuests(elementName, siblingElementName, parentDiv){
+    hideOverlayGuests(elementName, siblingElementName, parentDiv);
+    
+    cursorPointer(elementName);
+    cursorPointer(siblingElementName);
+
+    toggleDisableCounterButton(elementName);
+    toggleDisableCounterButton(siblingElementName);
+}
+
+
+
+/* Pasif hâle getirilen Guests butonlarında tıklamayı engellemek için oluşturulan div'lerin display  
+    özelliklerini block yaptık. Ardından bu div'lere de tıklanılmaması için click olayını kaldırdık. 
+*/
+function showOverlayGuests(elementName, siblingElementName, parentDiv) {
     let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
     let overlaySibling = document.querySelector(`#${siblingElementName} + div .overlay`);
     let clickButton = document.querySelector(`#${elementName} + div`);
@@ -514,6 +477,65 @@ function showOverlay(elementName, siblingElementName, parentDiv) {
         event.stopPropagation();
     });
 }
+
+
+
+/* Pasif hâle getirilen Rooms butonunda tıklamayı engellemek için oluşturulan div'in display  
+    özelliğini block yaptık. Ardından bu div'e de tıklanılmaması için click olayını kaldırdık. 
+*/
+function showOverlayRooms() {
+    let elementName = "rooms";
+    let overlay = document.querySelector(`#${elementName} + div .overlay`);
+    let clickButton = document.querySelector(`#${elementName} + div`);
+
+    clickButton.onclick = null;
+    overlay.classList.remove('d-none');
+    overlay.classList.add('d-block');
+
+    overlay.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+}
+
+
+
+function hideOverlayRooms(elementName){
+    let overlay = document.querySelector(`#${elementName} + div .overlay`);
+    let clickButton = document.querySelector(`#${elementName} + div`);
+
+    clickButton.onclick = function () {
+        IncreaseButton(this);
+    };
+
+    overlay.classList.remove('d-block');
+    overlay.classList.add('d-none');
+}
+
+
+
+function hideOverlayGuests(elementName, siblingElementName, parentDiv){
+    let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
+    let clickButton = document.querySelector(`#${elementName} + div`);
+
+    let clickButtonSibling = document.querySelector(`#${siblingElementName} + div`);
+    let overlaySibling = clickButtonSibling.parentElement.querySelector(`#${siblingElementName} + div .overlay`)
+
+    clickButton.onclick = function () {
+        IncreaseButton(this);
+    };
+
+    clickButtonSibling.onclick = function () {
+        IncreaseButton(this);
+    };
+
+    overlay.classList.remove('d-block');
+    overlay.classList.add('d-none');
+
+    overlaySibling.classList.remove('d-block');
+    overlaySibling.classList.add('d-none');
+}
+
 
 
 /* Pasif hâle getirilen butonun class'ını, color ve border değerlerini değiştirdiğimiz bir class ile değiştiriyoruz. */
@@ -559,15 +581,19 @@ function checkEnterKey(event, input) {
         showCurrentValue(input);
     }
 
-    // Tab ve Shift tuşuna basıldıysa bir sonraki input'a odaklıyoruz
+    /* Tab ve Shift tuşuna basıldıysa bir sonraki input'a odaklanıyoruz. */
     else if (event.key === "Tab" || event.shiftKey) {
         event.preventDefault();
         let inputs = document.querySelectorAll('.input-number');
         let currentIndex = Array.from(inputs).indexOf(input);
-        
+
         if (currentIndex >= 0 && currentIndex < 2) {
+            if(inputs[currentIndex].value == ""){
+                inputs[currentIndex].value = 0;
+            }
             inputs[currentIndex + 1].focus();
         }
+        showCurrentValue(input);
     }
 }
 
@@ -582,30 +608,17 @@ function showCurrentValue(input) {
     var Guests = adultsValue + childrenValue;
 
     if (input.id === "adults") {
-        updateGuestsAndRoomsInfo(input.id, "children", Guests, guestsandrooms, roomsValue, input);
+        updateGuestsInfo(input.id, "children", Guests, guestsandrooms, roomsValue, input);
     }
     else if (input.id === "children") {
-        updateGuestsAndRoomsInfo(input.id, "adults", Guests, guestsandrooms, roomsValue, input);
+        updateGuestsInfo(input.id, "adults", Guests, guestsandrooms, roomsValue, input);
     }
     else {
         if (roomsValue === 6) {
-            let overlay = document.querySelector('#rooms + div .overlay');
-            let clickButton = document.querySelector(`#rooms + div`);
-
-            clickButton.onclick = null;
-            overlay.classList.remove('d-none');
-            overlay.classList.add('d-block');
-
-            overlay.addEventListener("click", function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            });
-
-            cursorAuto("rooms");
-            toggleCounterButton("rooms");
+            executeDisableButtonActionsForRooms();
         }
         else if (roomsValue < 6) {
-            handleRoomCountDecrease()
+            executeEnableButtonActionsForRooms();
         }
         else {
             input.value = 1;
@@ -616,7 +629,7 @@ function showCurrentValue(input) {
 
 
 
-function updateGuestsAndRoomsInfo(elementName, siblingElementName, Guests, valuesDisplayElement, roomsValue, inputElement) {
+function updateGuestsInfo(elementName, siblingElementName, Guests, valuesDisplayElement, roomsValue, inputElement) {
     let parentDiv = inputElement.parentElement;
 
     if (Guests > 24) {
@@ -625,46 +638,22 @@ function updateGuestsAndRoomsInfo(elementName, siblingElementName, Guests, value
         if (siblingElementNameValue === 24) {
             inputElement.value = 0;
         }
+        else if (siblingElementNameValue === 23){
+            inputElement.value = 1;
+            executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
+        }
         else {
             inputElement.value = 1;
+            executeEnableButtonActionsForGuests(elementName, siblingElementName, parentDiv)
         }
-        handleGuestsCountDecrease(elementName, siblingElementName, parentDiv)
-
         valuesDisplayElement.innerHTML = `${(parseInt(inputElement.value) + siblingElementNameValue)} Guests, ${roomsValue} Rooms`;
     }
     else if (Guests === 24) {
-        let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
-        let overlaySibling = document.querySelector(`#${siblingElementName} + div .overlay`);
-        let clickButton = document.querySelector(`#${elementName} + div`);
-
-        clickButton.onclick = null;
-        overlay.classList.remove('d-none');
-        overlay.classList.add('d-block');
-
-        overlay.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-
-
-        overlaySibling.classList.remove('d-none');
-        overlaySibling.classList.add('d-block');
-
-        overlaySibling.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-        });
-
-        cursorAuto(elementName);
-        cursorAuto(siblingElementName);
-
-        toggleCounterButton(elementName);
-        toggleCounterButton(siblingElementName);
-
+        executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
         valuesDisplayElement.innerHTML = `${Guests} Guests, ${roomsValue} Rooms`;
     }
     else if (Guests < 24) {
-        handleGuestsCountDecrease(elementName, siblingElementName, parentDiv)
+        executeEnableButtonActionsForGuests(elementName, siblingElementName, parentDiv)
         valuesDisplayElement.innerHTML = `${Guests} Guests, ${roomsValue} Rooms`;
     }
 }
