@@ -330,7 +330,7 @@ a{
     top: 50%;
     left: 50%;
     width: 725px;
-    z-index: 15;
+    z-index: 7;
     color: var(--white);
     transform: translate(-50%, -40%);
 }
@@ -1293,6 +1293,10 @@ a{
     .guestsandrooms {
         font-size: 1.2rem;
         bottom: 20px;
+    }
+
+    .dateInput i {
+        height: 7.5rem;
     }
 
     #reservation .reservation-button {
