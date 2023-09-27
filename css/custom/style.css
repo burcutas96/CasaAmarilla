@@ -10,6 +10,8 @@ html{
 
 body{
     font-family: "Cabin", sans-serif !important;
+    padding: 0 !important;
+    overflow: auto !important;
 }
 
 :root{
@@ -91,6 +93,89 @@ a{
 /* Navbar */
 #mainNavbar{
     height: 77px;
+    margin-top: 10px;
+    background-color: transparent !important;
+}
+
+.navigation{
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding-top: 15px;
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.nav-contact{
+    color: var(--white);
+    z-index: 4;
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+}
+
+.nav-phone,
+.nav-mail{
+    font-size: 1.3rem;
+}
+
+.phone-number,
+.mail-address{
+    margin-left: 5px;
+}
+
+.nav-contact a{
+    color: var(--white);
+    font-size: 1.5rem;
+    padding: .1rem 1.8rem;
+    display: inline-block;
+}
+
+.nav-contact a:first-child{
+    border-radius: 0;
+    border-right: 2px solid var(--white);
+}
+
+.nav-contact a:hover{
+    color: var(--);
+}
+
+.navbar .logo{
+    margin-left: -54px;
+}
+
+.inclusive{
+    position: absolute;
+    z-index: 3;
+    cursor: auto;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.inclusive-left{
+    top: 0;
+    left: 0;
+    border-left-width: 51px;
+    height: 260px;
+}
+
+.inclusive-right{
+    top: 0;
+    right: 0;
+    border-right-width: 59px;
+    height: 260px;
+}
+
+.inclusive-top{
+    top: 0;
+    left: 0;
+    border-top-width: 100px;
+    width: 260px;
+}
+
+.inclusive-bottom{
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 90px;
+    width: 260px;
 }
 
 .navbar-toggler{
@@ -108,15 +193,16 @@ a{
 
 .navbar-toggler .bi-list{
     font-size: 3.2rem;
+    color: var(--white);
 }
 
 .navbar-nav .nav-link{
-    color: var(--night) !important; 
+    color: var(--white) !important; 
     font-size: 1.6rem;
     font-weight: 500;
-    margin: 0 1.9rem !important;
+    margin: 0 1.9rem;
     transition: all .4s;
-    border-bottom: 3px solid var(--white);
+    border-bottom: 3px solid transparent;
 }
 
 .navbar-nav .nav-item{
@@ -243,14 +329,17 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 720px;
+    width: 725px;
+    z-index: 15;
     color: var(--white);
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
 }
 
 .opening-title{
+    text-align: center;
     font-size: 6.7rem;
     font-weight: 500;
+    text-transform: capitalize;
     font-family: 'Libre Baskerville', serif;
     margin-bottom: 2.5rem;
 }
@@ -547,6 +636,14 @@ a{
 }
 
 @media (max-width: 991.9px) {
+    .nav-contact{
+        display: none !important;
+    }
+
+    .navbar .container-md{
+        margin-top: -110px;
+    }
+
     .offcanvas-header{
         justify-content: flex-end !important;
     }
@@ -585,6 +682,7 @@ a{
         font-weight: 500;
         margin: 0rem .8rem !important;
         transition: all .3s;
+        color: var(--black) !important;
         border-bottom: 3px solid transparent !important;
     }
 
@@ -651,6 +749,10 @@ a{
 @media (max-width: 767.9px){
     #mainNavbar {
         padding: 0rem 2rem;
+    }
+
+    .navbar .logo {
+        margin-left: -45px;
     }
 
     .search-close-switch{
@@ -780,8 +882,41 @@ a{
 
 
 @media (max-width: 619.9px){
+    .navbar-brand img{
+        width: 220px;
+        height: 220px;
+    }
+
+    .inclusive-left {
+        border-left-width: 41px;
+        height: 220px;
+    }
+
+    .inclusive-right {
+        border-right-width: 51px;
+        height: 220px;
+    }
+
+    .inclusive-top {
+        border-top-width: 83px;
+        width: 220px;
+    }
+
+    .inclusive-bottom {
+        border-bottom-width: 73px;
+        width: 220px;
+    }
+
+    .navbar .container-md {
+        margin-top: -95px;
+    }
+
+    .navbar .logo {
+        margin-left: -30px;
+    }
+
     .opening{
-        width: 485px;
+        width: 486px;
     }
 
     .opening-title{
@@ -791,7 +926,6 @@ a{
 
     .opening-text{
         letter-spacing: 0.05rem;
-        text-align: center;
     }
 
     .button-outline{
@@ -927,6 +1061,39 @@ a{
         padding: 0rem 1rem;
     }
 
+    .navbar .container-md {
+        margin-top: -80px;
+    }
+
+    .navbar .logo {
+        margin-left: -25px;
+    }
+
+    .navbar-brand img {
+        width: 185px;
+        height: 185px;
+    }
+
+    .inclusive-left {
+        border-left-width: 35px;
+        height: 185px;
+    }
+
+    .inclusive-right {
+        border-right-width: 44px;
+        height: 185px;
+    }
+
+    .inclusive-top {
+        border-top-width: 70px;
+        width: 185px;
+    }
+
+    .inclusive-bottom {
+        border-bottom-width: 62px;
+        width: 185px;
+    }
+
     .carousel-indicators [data-bs-target] {
         height: 1px !important;
         width: 20px !important;
@@ -1054,6 +1221,102 @@ a{
         font-size: 2.5rem;
     }
 }
+
+@media (max-width: 378.9px){
+    #mainNavbar {
+        padding: 0rem .7rem;
+    }
+
+    .navbar .container-md {
+        margin-top: -75px;
+    }
+
+    .navbar .logo {
+        margin-left: -27px;
+    }
+
+    .navbar-brand img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .inclusive-left {
+        border-left-width: 32px;
+        height: 170px;
+    }
+
+    .inclusive-right {
+        border-right-width: 41px;
+        height: 170px;
+    }
+
+    .inclusive-top {
+        border-top-width: 64px;
+        width: 170px;
+    }
+
+    .inclusive-bottom {
+        border-bottom-width: 57px;
+        width: 170px;
+    }
+
+    .opening-title {
+        font-size: 2.6rem;
+    }
+
+    .opening-text {
+        font-size: 1rem;
+    }
+
+    .button-outline {
+        font-size: .8rem;
+        font-weight: 700;
+    }
+
+    .reservation-title {
+        font-size: 2.5rem;
+    }
+
+    #reservation .form-control {
+        width: 200px;
+        height: 7.5rem;
+    }
+
+    #reservation .dateInput label, 
+    #guests .button-text {
+        font-size: 1.1rem;
+        top: 20px;
+    }
+
+    #reservation .checkInDate, 
+    #reservation .checkOutDate, 
+    .guestsandrooms {
+        font-size: 1.2rem;
+        bottom: 20px;
+    }
+
+    #reservation .reservation-button {
+        font-size: 1.5rem;
+        height: 4.5rem;
+    }
+
+    .section-title span {
+        font-size: 1.1rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        line-height: 3.8rem;
+    }
+
+    #aboutus .button-outline {
+        color: var(--black);
+        font-size: .9rem;
+    }
+}
+
+
   
   
   
