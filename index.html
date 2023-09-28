@@ -21,7 +21,6 @@
 <body id="home">
 
     <!-- Navbar -->
-
     <section class="navigation">
         <section class="nav-contact">
             <div class="container-md d-flex justify-content-between">
@@ -43,7 +42,58 @@
             </div>
         </section>
         
-        <nav class="navbar navbar-expand-lg" id="mainNavbar">
+        <nav class="navbar navbar-expand-lg mainNavbar">
+            <div class="container-md">
+                <div class="logo position-relative">
+                    <a class="navbar-brand" href="#home">
+                        <img src="https://ehotelservice.online/development/HotelSona/images/logo.png" alt="logo">
+                    </a>
+                    <div class="inclusive inclusive-left"></div>
+                    <div class="inclusive inclusive-right"></div>
+                    <div class="inclusive inclusive-top"></div>
+                    <div class="inclusive inclusive-bottom"></div>
+                </div>
+               
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation button">
+                    <i class="bi bi-list"></i>
+                </button>
+    
+                <div class="offcanvas offcanvas-start" id="navbarNav">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    </div>
+    
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav ms-auto align-items-center">
+                            <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Rooms</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">About Us</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages
+                                    <i class="bi bi-caret-right-fill right-icon"></i>
+                                    <i class="bi bi-caret-down-fill down-icon"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                    <li><a class="dropdown-item" href="#roomdetails">Room Details</a></li>
+                                    <li><a class="dropdown-item" href="#blogdetails">Blog Details</a></li>
+                                    <li><a class="dropdown-item" href="#familyroom">Family Room</a></li>
+                                    <li><a class="dropdown-item" href="#premiumroom">Premium Room</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">News</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Contact</a></li>
+                            <li class="nav-item"><i class="nav-link bi bi-search me-0"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg mainNavbar scroll-navbar">
             <div class="container-md">
                 <div class="logo position-relative">
                     <a class="navbar-brand" href="#home">
@@ -253,7 +303,7 @@
                     </div>
                     <div class="about-text">
                         <p>
-                            Sona.com is a leading online accommodation site. We’re passionate
+                            Casa Amarilla is a leading online accommodation site. We’re passionate
                             about travel. Every day, we inspire and reach millions of travelers
                             across 90 local websites in 41 languages.
                         </p>

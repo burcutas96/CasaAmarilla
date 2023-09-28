@@ -18,6 +18,19 @@ $(document).ready(function () {
 
 
 
+window.addEventListener("scroll", () => {
+    const header = document.querySelector('.scroll-navbar');
+
+    console.log(window.scrollY)
+    if (window.scrollY >= 300) {
+        header.classList.add("open");
+    } else {
+        header.classList.remove("open");
+    }
+});
+
+
+
 /* Ekran genişliğine göre açılır menünün ve ona bağlı ikonların davranışını değiştiriyoruz. */
 dropdownClick();
 function dropdownClick() {

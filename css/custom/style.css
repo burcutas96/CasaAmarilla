@@ -91,10 +91,24 @@ a{
 
 
 /* Navbar */
-#mainNavbar{
+.mainNavbar{
     height: 77px;
     margin-top: 10px;
     background-color: transparent !important;
+}
+
+.scroll-navbar{
+    height: 90px;
+    position: fixed !important;
+    top: -214px;
+    width: 100%;
+    transition: 0.6s;
+    background-color: var(--bs-dark) !important;
+}
+
+.open {
+    top: 0 !important;
+    margin-top: 0;
 }
 
 .navigation{
@@ -139,6 +153,7 @@ a{
 }
 
 .navbar .logo{
+    margin-top: -12px;
     margin-left: -54px;
 }
 
@@ -209,6 +224,10 @@ a{
     padding: 2rem .6rem;
 }
 
+.scroll-navbar .navbar-nav .nav-item{
+    padding: 2.7rem .6rem;
+}
+
 .navbar-nav .nav-item:first-child .nav-link{
     border-bottom: 3px solid var(--halloween);
 }
@@ -242,6 +261,10 @@ a{
     background-color: var(--white);
     border: none !important;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+}
+
+.scroll-navbar .dropdown-menu{
+    top: 90.6px;
 }
 
 .dropdown-item {
@@ -644,6 +667,18 @@ a{
         margin-top: -110px;
     }
 
+    .scroll-navbar .container-md {
+        margin-top: -85px;
+    }
+
+    .navbar .logo {
+        margin-top: 0px;
+    }
+
+    .scroll-navbar .logo {
+        margin-top: -12px;
+    }
+
     .offcanvas-header{
         justify-content: flex-end !important;
     }
@@ -747,7 +782,7 @@ a{
 }
 
 @media (max-width: 767.9px){
-    #mainNavbar {
+    .mainNavbar {
         padding: 0rem 2rem;
     }
 
@@ -882,6 +917,14 @@ a{
 
 
 @media (max-width: 619.9px){
+    .scroll-navbar .container-md {
+        margin-top: -70px !important;
+    }
+
+    .scroll-navbar {
+        height: 80px;
+    }
+
     .navbar-brand img{
         width: 220px;
         height: 220px;
@@ -912,7 +955,7 @@ a{
     }
 
     .navbar .logo {
-        margin-left: -30px;
+        margin-left: -32px;
     }
 
     .opening{
@@ -1057,8 +1100,16 @@ a{
 }
 
 @media (max-width: 437.9px){
-    #mainNavbar {
+    .mainNavbar {
         padding: 0rem 1rem;
+    }
+
+    .scroll-navbar {
+        height: 67px;
+    }
+
+    .scroll-navbar .container-md {
+        margin-top: -58px !important;
     }
 
     .navbar .container-md {
@@ -1223,10 +1274,18 @@ a{
 }
 
 @media (max-width: 378.9px){
-    #mainNavbar {
+    .mainNavbar {
         padding: 0rem .7rem;
     }
 
+    .scroll-navbar {
+        height: 60px;
+    }
+
+    .scroll-navbar .container-md {
+        margin-top: -53px !important;
+    }
+    
     .navbar .container-md {
         margin-top: -75px;
     }
