@@ -98,7 +98,7 @@ a{
 }
 
 .scroll-navbar{
-    height: 90px;
+    height: 100px;
     position: fixed !important;
     top: -214px;
     width: 100%;
@@ -153,7 +153,7 @@ a{
 }
 
 .navbar .logo{
-    margin-top: -12px;
+    margin-top: -15px;
     margin-left: -54px;
 }
 
@@ -676,7 +676,7 @@ a{
     }
 
     .scroll-navbar .logo {
-        margin-top: -12px;
+        margin-top: -7px;
     }
 
     .offcanvas-header{
@@ -922,40 +922,44 @@ a{
     }
 
     .scroll-navbar {
-        height: 80px;
+        height: 90px;
     }
 
     .navbar-brand img{
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
     }
 
     .inclusive-left {
-        border-left-width: 41px;
-        height: 220px;
+        border-left-width: 48px;
+        height: 250px;
     }
 
     .inclusive-right {
-        border-right-width: 51px;
-        height: 220px;
+        border-right-width: 57px;
+        height: 250px;
     }
 
     .inclusive-top {
-        border-top-width: 83px;
-        width: 220px;
+        border-top-width: 95px;
+        width: 250px;
     }
 
     .inclusive-bottom {
-        border-bottom-width: 73px;
-        width: 220px;
+        border-bottom-width: 86px;
+        width: 250px;
     }
 
     .navbar .container-md {
-        margin-top: -95px;
+        margin-top: -110px;
     }
 
     .navbar .logo {
-        margin-left: -32px;
+        margin-left: -38px;
+    }
+
+    .scroll-navbar .logo {
+        margin-top: -23px;
     }
 
     .opening{
@@ -1105,7 +1109,7 @@ a{
     }
 
     .scroll-navbar {
-        height: 67px;
+        height: 80px;
     }
 
     .scroll-navbar .container-md {
@@ -1113,36 +1117,36 @@ a{
     }
 
     .navbar .container-md {
-        margin-top: -80px;
+        margin-top: -100px;
     }
 
     .navbar .logo {
-        margin-left: -25px;
+        margin-left: -32px;
     }
 
     .navbar-brand img {
-        width: 185px;
-        height: 185px;
+        width: 220px;
+        height: 220px;
     }
 
     .inclusive-left {
-        border-left-width: 35px;
-        height: 185px;
+        border-left-width: 42px;
+        height: 220px;
     }
 
     .inclusive-right {
-        border-right-width: 44px;
-        height: 185px;
+        border-right-width: 51px;
+        height: 220px;
     }
 
     .inclusive-top {
-        border-top-width: 70px;
-        width: 185px;
+        border-top-width: 84px;
+        width: 220px;
     }
 
     .inclusive-bottom {
-        border-bottom-width: 62px;
-        width: 185px;
+        border-bottom-width: 75px;
+        width: 220px;
     }
 
     .carousel-indicators [data-bs-target] {
@@ -1279,44 +1283,44 @@ a{
     }
 
     .scroll-navbar {
-        height: 60px;
+        height: 70px;  
     }
 
     .scroll-navbar .container-md {
-        margin-top: -53px !important;
+        margin-top: -52px !important;
     }
-    
+
     .navbar .container-md {
-        margin-top: -75px;
+        margin-top: -93px;
     }
 
     .navbar .logo {
-        margin-left: -27px;
+        margin-left: -28px;
     }
 
     .navbar-brand img {
-        width: 170px;
-        height: 170px;
+        width: 200px;
+        height: 200px;
     }
 
     .inclusive-left {
-        border-left-width: 32px;
-        height: 170px;
+        border-left-width: 38px;
+        height: 200px;
     }
 
     .inclusive-right {
-        border-right-width: 41px;
-        height: 170px;
+        border-right-width: 47px;
+        height: 200px;
     }
 
     .inclusive-top {
-        border-top-width: 64px;
-        width: 170px;
+        border-top-width: 75px;
+        width: 200px;
     }
 
     .inclusive-bottom {
-        border-bottom-width: 57px;
-        width: 170px;
+        border-bottom-width: 68px;
+        width: 200px;
     }
 
     .opening-title {

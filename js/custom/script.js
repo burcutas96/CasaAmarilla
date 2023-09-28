@@ -21,8 +21,7 @@ $(document).ready(function () {
 window.addEventListener("scroll", () => {
     const header = document.querySelector('.scroll-navbar');
 
-    console.log(window.scrollY)
-    if (window.scrollY >= 300) {
+    if (window.scrollY >= 270) {
         header.classList.add("open");
     } else {
         header.classList.remove("open");
