@@ -1,20 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 10px;
 }
 
-body{
+body {
     font-family: "Cabin", sans-serif !important;
     padding: 0 !important;
-    overflow: auto !important;
 }
 
-:root{
+:root {
     --black: #000000;
     --space: #333333;
     --scarlet: #595960;
@@ -28,12 +27,23 @@ body{
     --white: #FFFFFF;
 }
 
-a{
-    color: var(--white);    
+a {
+    color: var(--white);
     text-decoration: none !important;
 }
 
-.button-outline{
+.custom-btn {
+    background-color: var(--halloween) !important;
+    font-size: 1.5rem;
+    color: var(--white) !important;
+    transition: all .4s;
+}
+
+.custom-btn:hover {
+    background-color: var(--summer) !important;
+}
+
+.button-outline {
     background-color: transparent;
     color: var(--white);
     display: inline-block;
@@ -54,25 +64,25 @@ a{
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Overlay'in diğer öğelerin üzerine gelmesini sağlar */
-    cursor: auto;/* Overlay'e tıklamayı etkinleştirir */
+    z-index: 1;
+    cursor: auto;
 }
 
-.section-padding{
+.section-padding {
     padding: 6rem 3rem;
 }
 
-.light-background{
+.light-background {
     background-color: var(--sky);
 }
 
-.section-title{
+.section-title {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.section-title span{
+.section-title span {
     text-transform: uppercase;
     color: var(--halloween);
     font-size: 1.5rem;
@@ -81,7 +91,7 @@ a{
     letter-spacing: .2rem;
 }
 
-.section-title h2{
+.section-title h2 {
     font-size: 3.8rem;
     font-family: 'Libre Baskerville', serif;
     letter-spacing: .1rem;
@@ -91,13 +101,21 @@ a{
 
 
 /* Navbar */
-.mainNavbar{
+.mainNavbar {
     height: 77px;
     margin-top: 10px;
     background-color: transparent !important;
 }
 
-.scroll-navbar{
+.navbar:not(.scroll-navbar){
+    z-index: 2;
+}
+
+.navbar.scroll-navbar{
+    z-index: 3;
+}
+
+.scroll-navbar {
     height: 100px;
     position: fixed !important;
     top: -214px;
@@ -111,7 +129,7 @@ a{
     margin-top: 0;
 }
 
-.navigation{
+.navigation {
     position: absolute;
     width: 100%;
     z-index: 10;
@@ -119,7 +137,7 @@ a{
     background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-.nav-contact{
+.nav-contact {
     color: var(--white);
     z-index: 4;
     position: relative;
@@ -127,37 +145,37 @@ a{
 }
 
 .nav-phone,
-.nav-mail{
+.nav-mail {
     font-size: 1.3rem;
 }
 
 .phone-number,
-.mail-address{
+.mail-address {
     margin-left: 5px;
 }
 
-.nav-contact a{
+.nav-contact a {
     color: var(--white);
     font-size: 1.5rem;
     padding: .1rem 1.8rem;
     display: inline-block;
 }
 
-.nav-contact a:first-child{
+.nav-contact a:first-child {
     border-radius: 0;
     border-right: 2px solid var(--white);
 }
 
-.nav-contact a:hover{
+.nav-contact a:hover {
     color: var(--);
 }
 
-.navbar .logo{
+.navbar .logo {
     margin-top: -15px;
     margin-left: -54px;
 }
 
-.inclusive{
+.inclusive {
     position: absolute;
     z-index: 3;
     cursor: auto;
@@ -165,54 +183,54 @@ a{
     border-color: transparent;
 }
 
-.inclusive-left{
+.inclusive-left {
     top: 0;
     left: 0;
     border-left-width: 51px;
     height: 260px;
 }
 
-.inclusive-right{
+.inclusive-right {
     top: 0;
     right: 0;
     border-right-width: 59px;
     height: 260px;
 }
 
-.inclusive-top{
+.inclusive-top {
     top: 0;
     left: 0;
     border-top-width: 100px;
     width: 260px;
 }
 
-.inclusive-bottom{
+.inclusive-bottom {
     bottom: 0;
     left: 0;
     border-bottom-width: 90px;
     width: 260px;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border: none !important;
 }
 
-.offcanvas{
+.offcanvas {
     width: 350px !important;
-    transition: .4s !important; 
+    transition: .4s !important;
 }
 
-.navbar-toggler:focus{
+.navbar-toggler:focus {
     box-shadow: var(--white) !important;
 }
 
-.navbar-toggler .bi-list{
+.navbar-toggler .bi-list {
     font-size: 3.2rem;
     color: var(--white);
 }
 
-.navbar-nav .nav-link{
-    color: var(--white) !important; 
+.navbar-nav .nav-link {
+    color: var(--white);
     font-size: 1.6rem;
     font-weight: 500;
     margin: 0 1.9rem;
@@ -220,27 +238,32 @@ a{
     border-bottom: 3px solid transparent;
 }
 
-.navbar-nav .nav-item{
+.navbar-nav .nav-item {
     padding: 2rem .6rem;
 }
 
-.scroll-navbar .navbar-nav .nav-item{
-    padding: 2.7rem .6rem;
+.scroll-navbar .navbar-nav .nav-item {
+    padding: 3.1rem .6rem;
 }
 
-.navbar-nav .nav-item:first-child .nav-link{
+.navbar-nav .nav-item:first-child .nav-link {
     border-bottom: 3px solid var(--halloween);
 }
 
-.navbar-nav .nav-item:hover .nav-link{
+.navbar-nav .nav-item:hover .nav-link {
     border-bottom: 3px solid var(--halloween);
 }
 
-.navbar-nav .nav-item:last-child .nav-link{
+.navbar-nav .nav-item:last-child .nav-link {
     border-bottom: 3px solid transparent !important;
 }
 
-.navbar-nav .bi-search{
+.nav-login,
+.nav-signup {
+    display: none !important;
+}
+
+.navbar-nav .bi-search {
     cursor: pointer;
 }
 
@@ -248,9 +271,13 @@ a{
     display: none !important;
 }
 
+.scroll-navbar .dropdown-menu[data-bs-popper] {
+    top: 99px !important;
+}
+
 .dropdown-menu {
     position: absolute;
-    display: none;
+    display: none !important;
     top: 76.4px;
     left: 0;
     font-size: initial !important;
@@ -260,11 +287,11 @@ a{
     padding: 1rem .5rem !important;
     background-color: var(--white);
     border: none !important;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .175);
 }
 
-.scroll-navbar .dropdown-menu{
-    top: 90.6px;
+.scroll-navbar .dropdown-menu {
+    top: 99px;
 }
 
 .dropdown-item {
@@ -316,7 +343,7 @@ a{
     justify-content: center;
 }
 
-.search-model #search-input{
+.search-model #search-input {
     width: 50rem;
     height: 5.8rem;
     padding-bottom: .3rem;
@@ -328,17 +355,17 @@ a{
     border-bottom: 2px solid var(--shades);
 }
 
-.search-model #search-input::placeholder{
+.search-model #search-input::placeholder {
     color: var(--shades);
 }
 
-.search-model #search-input:focus-visible{
+.search-model #search-input:focus-visible {
     outline: none;
 }
 
 
 /* Header */
-.carousel::after{
+.carousel::after {
     position: absolute;
     top: 0;
     left: 0;
@@ -348,8 +375,9 @@ a{
     background: rgba(0, 0, 0, .6);
 }
 
-.opening{
+.opening {
     position: absolute;
+    text-align: center;
     top: 50%;
     left: 50%;
     width: 725px;
@@ -358,8 +386,7 @@ a{
     transform: translate(-50%, -40%);
 }
 
-.opening-title{
-    text-align: center;
+.opening-title {
     font-size: 6.7rem;
     font-weight: 500;
     text-transform: capitalize;
@@ -367,7 +394,7 @@ a{
     margin-bottom: 2.5rem;
 }
 
-.opening-text{
+.opening-text {
     font-size: 1.8rem;
     margin-bottom: 2.5rem;
     letter-spacing: .1rem;
@@ -375,50 +402,50 @@ a{
 
 
 /* Reservation */
-.reservation-title{
+.reservation-title {
     font-size: 3.7rem;
     font-weight: 500;
     font-family: 'Libre Baskerville', serif;
 }
 
-#reservation .row{
+#reservation .row {
     margin-top: 5rem;
 }
 
-#reservation label{
+#reservation label {
     font-size: 1.7rem;
     color: var(--black);
-} 
+}
 
-#reservation .form-control{
+#reservation .form-control {
     width: 330px;
     height: 8rem;
     font-size: 1.5rem;
     border: 2px solid transparent;
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
     display: inline-block !important;
     transition: all .4s;
 }
 
 #reservation .form-control:hover,
-.dateInput:hover #checkIn, 
-.dateInput:hover #checkOut{ 
+.dateInput:hover #checkIn,
+.dateInput:hover #checkOut {
     background-color: #f0f0f0;
 }
 
 #reservation .dateInput label,
-#guests .button-text{
+#guests .button-text {
     position: absolute;
-    top: 17px; 
+    top: 17px;
     left: 35px;
-    color: #6c707a; 
+    color: #6c707a;
     cursor: pointer;
     font-size: 1.5rem;
 }
 
 #reservation .checkInDate,
 #reservation .checkOutDate,
-.guestsandrooms{
+.guestsandrooms {
     position: absolute;
     bottom: 16px;
     left: 35px;
@@ -428,31 +455,31 @@ a{
     font-family: 'Noto Sans Display', sans-serif;
 }
 
-.guestsandrooms:hover{
+.guestsandrooms:hover {
     cursor: text;
 }
 
-#reservation .form-control:focus{
+#reservation .form-control:focus {
     border: 2px solid var(--halloween);
 }
 
-#reservation .form-control::placeholder{
+#reservation .form-control::placeholder {
     font-size: 1.7rem;
     color: var(--space);
 }
 
-#reservation .input-button{
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.3);
+#reservation .input-button {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
     height: 4.5rem;
     padding: 0 1.5rem;
 }
 
-#reservation .input-button:active{
+#reservation .input-button:active {
     border: 1px solid transparent;
 }
 
 #reservation .right-icon,
-#reservation .down-icon{
+#reservation .down-icon {
     font-size: 1.5rem;
     position: absolute;
     top: 50%;
@@ -460,42 +487,38 @@ a{
     right: 25px;
 }
 
-#reservation .right-icon{
+#reservation .right-icon {
     display: block;
 }
 
-#reservation .reservation-button{
-    background-color: var(--halloween);
-    padding-left: 0;
+#reservation .reservation-button {
     font-size: 2rem;
-    color: var(--white);
     border: 2px solid var(--halloween);
-    transition: all .4s;
 }
 
-#reservation .reservation-button:active{
+#reservation .reservation-button:active {
     border-color: var(--summer) !important;
 }
 
-#reservation .reservation-button:hover{
+#reservation .reservation-button:hover {
     background-color: var(--summer);
     border: 2px solid var(--summer);
 }
 
-#reservation .row>*{
+#reservation .row>* {
     padding-left: 0;
     padding-right: 0;
 }
 
-.dateInput{
+.dateInput {
     position: relative;
 }
 
-.dateInput .datePicker:hover{
+.dateInput .datePicker:hover {
     cursor: pointer;
 }
 
-.dateInput i{
+.dateInput i {
     position: absolute;
     height: 8rem;
     width: 5.3rem;
@@ -507,7 +530,7 @@ a{
     transition: all .4s;
 }
 
-.dateInput i:hover{
+.dateInput i:hover {
     color: var(--white);
     background-color: var(--halloween);
 }
@@ -516,18 +539,18 @@ a{
     right: 5.3rem;
 }
 
-.dateInput .clear-icon{
+.dateInput .clear-icon {
     right: 0px;
     border-top-right-radius: 0.375rem;
     border-bottom-right-radius: 0.375rem;
 }
 
-#guests{
+#guests {
     text-align: left;
     font-size: 1.6rem !important;
-} 
+}
 
-.guestsform{
+.guestsform {
     opacity: 0;
     width: 330px;
     display: none;
@@ -537,20 +560,20 @@ a{
     padding: 1.5rem 2rem;
     border-radius: 10px;
     background-color: var(--white);
-    box-shadow: 0 10px 30px rgba(41,51,57,0.75);
+    box-shadow: 0 10px 30px rgba(41, 51, 57, 0.75);
 }
 
-.guestsform.active{
+.guestsform.active {
     opacity: 1;
     display: inline-block;
 }
 
-.guestsform label{
+.guestsform label {
     color: var(--space) !important;
     margin-right: 5rem;
 }
 
-.guestsform .counter-button{
+.guestsform .counter-button {
     border: 2px solid var(--halloween);
 }
 
@@ -561,43 +584,43 @@ a{
 }
 
 .guestsform .disable-counter-button,
-.guestsform .counter-button{
+.guestsform .counter-button {
     font-size: 2.523rem;
     padding: .2rem .5rem;
     border-radius: 50%;
 }
 
-.guestsform input{
+.guestsform input {
     width: 4.3rem;
     height: 4rem;
     text-align: center;
     font-size: 1.8rem;
     margin: 0 10px;
-    border: 2px solid rgba(219,221,225,1);
+    border: 2px solid rgba(219, 221, 225, 1);
     border-radius: 5px;
     transition: all .4s;
 }
 
-.guestsform input:focus{
+.guestsform input:focus {
     border: 2px solid var(--halloween) !important;
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2) !important;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2) !important;
 }
 
 :not(.btn-check)+.btn:active {
     border-color: transparent !important;
 }
 
-.btn:first-child:active{
+.btn:first-child:active {
     border-color: transparent !important;
 }
 
-.guestsform input:focus-visible{
+.guestsform input:focus-visible {
     outline: none !important;
 }
 
 
 /* About Us */
-.about-text{
+.about-text {
     padding: 1.5rem 5rem;
     font-size: 1.5rem;
     text-align: center;
@@ -605,24 +628,24 @@ a{
     font-weight: 500;
 }
 
-#aboutus .button-outline{
+#aboutus .button-outline {
     color: var(--black);
 }
 
-@media (max-width: 1399.9px){
-    #reservation .form-control{
+@media (max-width: 1399.9px) {
+    #reservation .form-control {
         width: 286px;
     }
 }
 
-@media (max-width: 1199.9px){
-    .guestsform{
+@media (max-width: 1199.9px) {
+    .guestsform {
         left: initial;
     }
 }
 
 @media (max-width: 1199.9px) and (min-width: 992px) {
-    #aboutus img{
+    #aboutus img {
         width: 200px;
     }
 }
@@ -647,23 +670,30 @@ a{
             opacity: 1;
         }
     }
-    
+
+    .nav-link:focus, 
+    .nav-link:hover,
+    .navbar-nav .nav-link.active, 
+    .navbar-nav .nav-link.show{
+        color: var(--white) !important;
+    }
+
     .dropdown .right-icon,
-    .dropdown .down-icon{
+    .dropdown .down-icon {
         display: none !important;
     }
 
-    .carousel-inner img{
+    .carousel-inner img {
         max-height: 750px;
     }
 }
 
 @media (max-width: 991.9px) {
-    .nav-contact{
+    .nav-contact {
         display: none !important;
     }
 
-    .navbar .container-md{
+    .navbar .container-md {
         margin-top: -110px;
     }
 
@@ -679,11 +709,15 @@ a{
         margin-top: -7px;
     }
 
-    .offcanvas-header{
+    .nav-item.d-flex {
+        border-bottom: 1px solid transparent !important;
+    }
+
+    .offcanvas-header {
         justify-content: flex-end !important;
     }
 
-    .offcanvas-header .btn-close{
+    .offcanvas-header .btn-close {
         font-size: 1.5rem !important;
         display: inline-block;
         padding: 1.8rem 5rem 1.8rem 0 !important;
@@ -695,93 +729,97 @@ a{
         flex: 1;
         width: 80%;
         border-bottom: 1px solid #ddd;
-        padding: 10px 0; 
+        padding: 10px 0 !important;
     }
 
-    .navbar-nav .nav-item:last-child{
+    .navbar-nav .nav-item:last-child {
         border-bottom: none;
     }
-    
-    .navbar-nav .nav-item:last-child{
+
+    .navbar-nav .nav-item:last-child {
         order: -1;
         display: flex;
         justify-content: center;
     }
 
-    .navbar-nav .bi-search{
+    .navbar-nav .bi-search {
         font-size: 1.8rem !important;
     }
 
-    .navbar-nav .nav-link{
+    .navbar-nav .nav-link {
         font-size: 1.4rem;
         font-weight: 500;
-        margin: 0rem .8rem !important;
+        margin: 0rem .8rem;
         transition: all .3s;
-        color: var(--black) !important;
+        color: var(--black);
         border-bottom: 3px solid transparent !important;
     }
 
-    .navbar-nav .nav-link:hover{
+    .navbar-nav .nav-link:hover {
         color: var(--halloween) !important;
     }
 
-    .navbar-nav .nav-item:last-child .nav-link:hover{
+    .navbar-nav .nav-item:last-child .nav-link:hover {
         color: var(--night) !important;
     }
 
-    .dropdown-toggle{
+    .nav-login, .nav-signup {
+        display: inline-block  !important;
+    }
+
+    .dropdown-toggle {
         position: relative;
     }
 
     .dropdown .right-icon,
-    .dropdown .down-icon{
-        position: absolute; 
+    .dropdown .down-icon {
+        position: absolute;
         top: 50%;
         left: 45px;
         font-size: 1.2rem;
         transform: translateY(-50%);
     }
 
-    .dropdown .right-icon{
+    .dropdown .right-icon {
         display: block;
     }
 
-    .dropdown .down-icon{
+    .dropdown .down-icon {
         display: none;
     }
 
-    .dropdown-toggle:hover + .right-icon,
-    .dropdown-toggle:hover + .down-icon{
+    .dropdown-toggle:hover+.right-icon,
+    .dropdown-toggle:hover+.down-icon {
         color: var(--halloween) !important;
     }
 
-    .opening{
+    .opening {
         width: 670px;
     }
 
-    .opening-title{
+    .opening-title {
         font-size: 6.2rem;
         margin-bottom: 2.3rem;
     }
 
-    .opening-text{
+    .opening-text {
         font-size: 1.5rem;
         margin-bottom: 2.3rem;
         letter-spacing: 0.05rem;
     }
 
-    .button-outline{
+    .button-outline {
         padding: .5rem .1rem;
         font-size: 1.3rem;
         letter-spacing: .2rem;
     }
 
-    #aboutus img{
+    #aboutus img {
         width: 325px;
     }
 }
 
-@media (max-width: 767.9px){
+@media (max-width: 767.9px) {
     .mainNavbar {
         padding: 0rem 2rem;
     }
@@ -790,14 +828,14 @@ a{
         margin-left: -45px;
     }
 
-    .search-close-switch{
+    .search-close-switch {
         width: 4.7rem;
         height: 4.7rem;
         font-size: 2.3rem;
         line-height: 2.3rem;
     }
 
-    .search-model #search-input{
+    .search-model #search-input {
         width: 45rem;
         height: 5.4rem;
         padding-bottom: .3rem;
@@ -805,26 +843,26 @@ a{
         font-size: 3.4rem;
     }
 
-    .opening{
+    .opening {
         width: 575px;
     }
 
-    .opening-title{
+    .opening-title {
         font-size: 5.3rem;
         margin-bottom: 2rem;
     }
 
-    .opening-text{
+    .opening-text {
         font-size: 1.3rem;
         margin-bottom: 2rem;
         letter-spacing: 0.1rem;
     }
 
-    .button-outline{
+    .button-outline {
         padding: .4rem .1rem;
     }
 
-    #reservation .row{
+    #reservation .row {
         margin-top: 1.5rem;
     }
 
@@ -832,17 +870,17 @@ a{
         width: 250px;
     }
 
-    #reservation .reservation-button{
+    #reservation .reservation-button {
         font-size: 1.9rem;
         height: 5.5rem;
     }
 
-    #reservation .right-icon, 
+    #reservation .right-icon,
     #reservation .down-icon {
         font-size: 1.4rem;
     }
 
-    .reservation-title{
+    .reservation-title {
         font-size: 3.5rem;
     }
 
@@ -850,24 +888,24 @@ a{
     #guests .button-text,
     #reservation .checkInDate,
     #reservation .checkOutDate,
-    .guestsandrooms{
+    .guestsandrooms {
         left: 27px;
     }
 
-    #reservation .dateInput label, 
+    #reservation .dateInput label,
     #guests .button-text {
         font-size: 1.3rem;
         top: 19px;
     }
 
-    #reservation .checkInDate, 
+    #reservation .checkInDate,
     #reservation .checkOutDate,
     .guestsandrooms {
         font-size: 1.4rem;
         bottom: 19px;
     }
 
-    .dateInput i{
+    .dateInput i {
         width: 3.7rem;
         font-size: 1.3rem;
     }
@@ -876,7 +914,7 @@ a{
         right: 3.7rem;
     }
 
-    .guestsform{
+    .guestsform {
         width: 310px;
     }
 
@@ -885,28 +923,28 @@ a{
         font-size: 2.2rem;
     }
 
-    .guestsform input{
+    .guestsform input {
         width: 4rem;
         height: 3.7rem;
         font-size: 1.5rem;
         margin: 0 5px;
     }
 
-    .guestsform label{
+    .guestsform label {
         margin-right: 4rem;
         font-size: 1.6rem !important;
     }
 
-    .section-title span{
+    .section-title span {
         font-size: 1.4rem;
     }
-    
-    .section-title h2{
+
+    .section-title h2 {
         font-size: 3.1rem;
         line-height: 4.5rem;
     }
 
-    .about-text{
+    .about-text {
         padding: 1rem 3rem;
     }
 
@@ -916,7 +954,7 @@ a{
 }
 
 
-@media (max-width: 619.9px){
+@media (max-width: 619.9px) {
     .scroll-navbar .container-md {
         margin-top: -70px !important;
     }
@@ -925,7 +963,7 @@ a{
         height: 90px;
     }
 
-    .navbar-brand img{
+    .navbar-brand img {
         width: 250px;
         height: 250px;
     }
@@ -962,37 +1000,37 @@ a{
         margin-top: -23px;
     }
 
-    .opening{
+    .opening {
         width: 486px;
     }
 
-    .opening-title{
+    .opening-title {
         font-size: 4.5rem;
         margin-bottom: 1rem;
     }
 
-    .opening-text{
+    .opening-text {
         letter-spacing: 0.05rem;
     }
 
-    .button-outline{
+    .button-outline {
         padding: .3rem .1rem;
     }
 }
 
-@media (max-width: 578px){
-    .offcanvas{
-        width: 300px !important; 
+@media (max-width: 578px) {
+    .offcanvas {
+        width: 300px !important;
     }
 
-    .search-close-switch{
+    .search-close-switch {
         width: 4.5rem;
         height: 4.5rem;
         font-size: 2rem;
         line-height: 2rem;
     }
 
-    .search-model #search-input{
+    .search-model #search-input {
         width: 37rem;
         height: 5rem;
         padding-bottom: .2rem;
@@ -1006,23 +1044,22 @@ a{
     }
 }
 
-@media (max-width: 575.9px){
+@media (max-width: 575.9px) {
     #aboutus img {
         width: 350px;
     }
 }
 
-@media (max-width: 531.9px){
-    .opening{
+@media (max-width: 531.9px) {
+    .opening {
         width: 410px;
-        text-align: center;
     }
 
-    .opening-title{
+    .opening-title {
         font-size: 3.5rem;
     }
 
-    .button-outline{
+    .button-outline {
         padding: .2rem .1rem;
         font-size: 1rem;
     }
@@ -1031,17 +1068,17 @@ a{
         width: 225px;
     }
 
-    #reservation .reservation-button{
+    #reservation .reservation-button {
         font-size: 1.7rem;
     }
 
-    #reservation .right-icon, 
+    #reservation .right-icon,
     #reservation .down-icon {
         font-size: 1.3rem;
         right: 20px;
     }
 
-    .reservation-title{
+    .reservation-title {
         font-size: 3.2rem;
     }
 
@@ -1049,24 +1086,24 @@ a{
     #guests .button-text,
     #reservation .checkInDate,
     #reservation .checkOutDate,
-    .guestsandrooms{
+    .guestsandrooms {
         left: 23px;
     }
 
-    #reservation .dateInput label, 
+    #reservation .dateInput label,
     #guests .button-text {
         top: 18px;
         font-size: 1.3rem;
     }
 
-    #reservation .checkInDate, 
+    #reservation .checkInDate,
     #reservation .checkOutDate,
     .guestsandrooms {
         font-size: 1.4rem;
         bottom: 18px;
     }
 
-    .dateInput i{
+    .dateInput i {
         width: 3.3rem;
         font-size: 1.1rem;
     }
@@ -1075,7 +1112,7 @@ a{
         right: 3.3rem;
     }
 
-    .guestsform{
+    .guestsform {
         width: 280px;
     }
 
@@ -1084,26 +1121,26 @@ a{
         font-size: 2rem;
     }
 
-    .guestsform input{
+    .guestsform input {
         width: 3.7rem;
         height: 3.3rem;
         font-size: 1.4rem;
         margin: 0 2px;
     }
 
-    .guestsform label{
+    .guestsform label {
         margin-right: 3.7rem;
     }
 }
 
-@media (min-width: 438px) and (max-width: 532px){
+@media (min-width: 438px) and (max-width: 532px) {
     .carousel-indicators [data-bs-target] {
         height: 1px !important;
         width: 25px !important;
     }
 }
 
-@media (max-width: 437.9px){
+@media (max-width: 437.9px) {
     .mainNavbar {
         padding: 0rem 1rem;
     }
@@ -1154,19 +1191,19 @@ a{
         width: 20px !important;
     }
 
-    .opening{
+    .opening {
         width: 310px;
     }
 
-    .opening-title{
+    .opening-title {
         font-size: 2.8rem;
     }
 
-    .opening-text{
+    .opening-text {
         font-size: 1.15rem;
     }
 
-    .button-outline{
+    .button-outline {
         font-size: .9rem;
         letter-spacing: .1rem;
         border-bottom: 2px solid var(--halloween);
@@ -1181,39 +1218,39 @@ a{
         font-size: 1.4rem;
     }
 
-    #reservation .reservation-button{
+    #reservation .reservation-button {
         font-size: 1.6rem;
         height: 5rem;
     }
 
-    #reservation .right-icon, 
+    #reservation .right-icon,
     #reservation .down-icon {
         font-size: 1.2rem;
     }
 
-    .reservation-title{
+    .reservation-title {
         font-size: 2.8rem;
         text-align: center;
     }
 
-    #reservation .dateInput label, 
+    #reservation .dateInput label,
     #guests .button-text {
         font-size: 1.2rem;
         top: 21px;
     }
 
-    #reservation .checkInDate, 
+    #reservation .checkInDate,
     #reservation .checkOutDate,
     .guestsandrooms {
         font-size: 1.3rem;
         bottom: 21px;
     }
 
-    #guests{
+    #guests {
         font-size: 1.4rem !important;
     }
 
-    .dateInput i{
+    .dateInput i {
         width: 2.9rem;
         font-size: 1rem;
     }
@@ -1222,12 +1259,12 @@ a{
         right: 2.9rem;
     }
 
-    .guestsform{
+    .guestsform {
         width: 245px;
         padding: 1.2rem 1.5rem;
     }
 
-    .guestsform button{
+    .guestsform button {
         padding: 0.375rem 0.3rem;
     }
 
@@ -1236,22 +1273,22 @@ a{
         font-size: 1.8rem;
     }
 
-    .guestsform input{
+    .guestsform input {
         width: 3.1rem;
         height: 2.9rem;
         font-size: 1.2rem;
     }
 
-    .guestsform label{
+    .guestsform label {
         margin-right: 2rem;
         font-size: 1.4rem !important;
     }
 
-    .section-title span{
+    .section-title span {
         font-size: 1.2rem;
     }
-    
-    .section-title h2{
+
+    .section-title h2 {
         font-size: 2.8rem;
         line-height: 4rem;
         letter-spacing: 0;
@@ -1261,29 +1298,33 @@ a{
         padding: 1rem 2rem;
     }
 }
-  
-@media (max-width: 405px){
-    .search-close-switch{
+
+@media (max-width: 405px) {
+    .search-close-switch {
         width: 4.1rem;
         height: 4.1rem;
         font-size: 1.7rem;
         line-height: 1.7rem;
     }
 
-    .search-model #search-input{
+    .search-model #search-input {
         width: 32rem;
         height: 4rem;
         font-size: 2.5rem;
     }
 }
 
-@media (max-width: 378.9px){
+@media (max-width: 378.9px) {
+    .offcanvas {
+        width: 250px !important;
+    }
+
     .mainNavbar {
         padding: 0rem .7rem;
     }
 
     .scroll-navbar {
-        height: 70px;  
+        height: 70px;
     }
 
     .scroll-navbar .container-md {
@@ -1345,14 +1386,14 @@ a{
         height: 7.5rem;
     }
 
-    #reservation .dateInput label, 
+    #reservation .dateInput label,
     #guests .button-text {
         font-size: 1.1rem;
         top: 20px;
     }
 
-    #reservation .checkInDate, 
-    #reservation .checkOutDate, 
+    #reservation .checkInDate,
+    #reservation .checkOutDate,
     .guestsandrooms {
         font-size: 1.2rem;
         bottom: 20px;
@@ -1382,10 +1423,3 @@ a{
         font-size: .9rem;
     }
 }
-
-
-  
-  
-  
-  
-  

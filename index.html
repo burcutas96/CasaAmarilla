@@ -53,39 +53,44 @@
                     <div class="inclusive inclusive-top"></div>
                     <div class="inclusive inclusive-bottom"></div>
                 </div>
-               
     
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation button">
                     <i class="bi bi-list"></i>
                 </button>
-    
-                <div class="offcanvas offcanvas-start" id="navbarNav">
+
+                <div class="offcanvas offcanvas-end" id="navbarNav">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                     </div>
-    
+            
                     <div class="offcanvas-body">
                         <ul class="navbar-nav ms-auto align-items-center">
                             <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Rooms</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">About Us</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                            <li class="nav-item dropdown" id="pagesDropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" onclick="dropdownClick('navbarNav')"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Pages
                                     <i class="bi bi-caret-right-fill right-icon"></i>
                                     <i class="bi bi-caret-down-fill down-icon"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
-                                    <li><a class="dropdown-item" href="#roomdetails">Room Details</a></li>
-                                    <li><a class="dropdown-item" href="#blogdetails">Blog Details</a></li>
-                                    <li><a class="dropdown-item" href="#familyroom">Family Room</a></li>
-                                    <li><a class="dropdown-item" href="#premiumroom">Premium Room</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#roomdetails">Room Details</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#blogdetails">Blog Details</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#familyroom">Family Room</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#premiumroom">Premium Room</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">News</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Contact</a></li>
+                            <li class="nav-item nav-login">
+                                <a href="#" class="nav-link btn-close-canvas">Login</a>
+                            </li>
+                            <li class="nav-item nav-signup">
+                                <a href="#" class="nav-link btn-close-canvas">Sign-up</a>
+                            </li>
                             <li class="nav-item"><i class="nav-link bi bi-search me-0"></i></li>
                         </ul>
                     </div>
@@ -103,40 +108,45 @@
                     <div class="inclusive inclusive-right"></div>
                     <div class="inclusive inclusive-top"></div>
                     <div class="inclusive inclusive-bottom"></div>
-                </div>
-               
+                </div>      
     
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation button">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#scrollNavbarNav"
+                    aria-controls="scrollNavbarNav" aria-expanded="false" aria-label="Navigation button">
                     <i class="bi bi-list"></i>
                 </button>
-    
-                <div class="offcanvas offcanvas-start" id="navbarNav">
+
+                <div class="offcanvas offcanvas-end" id="scrollNavbarNav">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                     </div>
-    
+            
                     <div class="offcanvas-body">
                         <ul class="navbar-nav ms-auto align-items-center">
                             <li class="nav-item"><a href="#home" class="nav-link btn-close-canvas">Home</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Rooms</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">About Us</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" onclick="dropdownClick('scrollNavbarNav')"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Pages
                                     <i class="bi bi-caret-right-fill right-icon"></i>
                                     <i class="bi bi-caret-down-fill down-icon"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
-                                    <li><a class="dropdown-item" href="#roomdetails">Room Details</a></li>
-                                    <li><a class="dropdown-item" href="#blogdetails">Blog Details</a></li>
-                                    <li><a class="dropdown-item" href="#familyroom">Family Room</a></li>
-                                    <li><a class="dropdown-item" href="#premiumroom">Premium Room</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#roomdetails">Room Details</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#blogdetails">Blog Details</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#familyroom">Family Room</a></li>
+                                    <li><a class="dropdown-item btn-close-canvas" href="#premiumroom">Premium Room</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">News</a></li>
                             <li class="nav-item"><a href="#" class="nav-link btn-close-canvas">Contact</a></li>
+                            <li class="nav-item nav-login">
+                                <a href="#" class="nav-link btn-close-canvas">Login</a>
+                            </li>
+                            <li class="nav-item nav-signup">
+                                <a href="#" class="nav-link btn-close-canvas">Sign-up</a>
+                            </li>
                             <li class="nav-item"><i class="nav-link bi bi-search me-0"></i></li>
                         </ul>
                     </div>
@@ -144,6 +154,9 @@
             </div>
         </nav>
     </section>
+
+
+    
 
 
     <!-- Header -->
@@ -284,7 +297,7 @@
                 </div>
 
                 <div class="col-md-6 col-xl-3 d-flex justify-content-center mt-5 mt-xl-0">
-                    <button type="submit" class="btn form-control reservation-button">Reservation</button>
+                    <button type="submit" class="btn form-control custom-btn reservation-button">Reservation</button>
                 </div>
             </div>
         </div>

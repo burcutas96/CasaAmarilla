@@ -18,25 +18,86 @@ $(document).ready(function () {
 
 
 
+/* 992px altında açılan offcanvas menüsünün, içerisindeki herhangi bir elemana tıklandığında offcanvas'ın kapanmasını sağlıyoruz. */
+let navbarNav = document.getElementById('navbarNav');
+let scrollNavbarNav = document.getElementById('scrollNavbarNav');
+
+closeOffcanvas(navbarNav);
+closeOffcanvas(scrollNavbarNav);
+
+function closeOffcanvas(navbar) {
+    let btnCanvas = navbar.parentElement.querySelectorAll(".btn-close-canvas");
+
+    for (let i = 0; i < btnCanvas.length; i++) {
+        btnCanvas[i].addEventListener("click", function () {
+
+            navbar.parentElement.querySelector('[data-bs-dismiss="offcanvas"]').click();
+        });
+    }
+}
+
+
+
+/* Scroll dikey eksende 270 piksel veya üzerinde bir değere sahipse koyu renkteki navbar'ı açıyoruz. Yok eğer 270 
+    pikselin altında bir değere sahipse o zamanda bu koyu renkli navbar'ı ve bu navbar'a ait dropdown-menu'yü kapatıyoruz.
+*/
 window.addEventListener("scroll", () => {
-    const header = document.querySelector('.scroll-navbar');
+    const navbar = document.querySelector('.scroll-navbar');
+    const dropdownMenu = document.querySelector('.scroll-navbar .dropdown-menu');
 
     if (window.scrollY >= 270) {
-        header.classList.add("open");
+        navbar.classList.add("open");
     } else {
-        header.classList.remove("open");
+        navbar.classList.remove("open");
+        dropdownMenu.classList.remove("show");
+        dropdownMenu.classList.remove("d-block");
     }
 });
 
 
 
+/* İlgili navbar'ın toggler'ına tıklandığında dropdown-menu açıksa kapatıyoruz ve bu 
+    dropdown-menu'ye ait olan ikonları düzenliyoruz. Ayrıca toggler'a tıklandığında sayfadaki 
+    scroll'u kaldırıp offcanvas kapandığında tekrar görünür yapıyoruz.
+*/
+navbarControl('navbarNav');
+navbarControl('scrollNavbarNav');
+
+function navbarControl(navbar) {
+    let toggler = document.querySelector(`.navbar-toggler[data-bs-target="#${navbar}"]`);
+    let togglerParents = toggler.parentElement;
+
+    let dropdownMenu = togglerParents.querySelector('.dropdown-menu');
+    let downIcon = togglerParents.querySelector('.down-icon');
+    let rightIcon = togglerParents.querySelector('.right-icon');
+
+    toggler.addEventListener('click', function () {
+        document.body.style.overflow = 'hidden';
+
+        dropdownMenu.classList.remove('d-block');
+        dropdownMenu.classList.remove('show');
+
+        downIcon.classList.add('d-none');
+        downIcon.classList.remove('d-block');
+        rightIcon.classList.add('d-block');
+        rightIcon.classList.remove('d-none');
+    });
+
+    let navbarElement = document.getElementById(`${navbar}`);
+
+    navbarElement.addEventListener('hidden.bs.offcanvas', function () {
+        document.body.style.overflow = '';
+    });
+}
+
+
+
 /* Ekran genişliğine göre açılır menünün ve ona bağlı ikonların davranışını değiştiriyoruz. */
-dropdownClick();
-function dropdownClick() {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const downIcon = document.querySelector('.dropdown .down-icon');
-    const rightIcon = document.querySelector('.dropdown .right-icon');
+function dropdownClick(navbar) {
+    let dropdown = document.querySelector(`#${navbar} .dropdown`);
+    let dropdownMenu = document.querySelector(`#${navbar} .dropdown-menu`);
+    let downIcon = document.querySelector(`#${navbar} .down-icon`);
+    let rightIcon = document.querySelector(`#${navbar} .right-icon`);
 
     if (window.innerWidth < 991.9) {
         dropdown.addEventListener('click', function () {
@@ -57,6 +118,16 @@ function dropdownClick() {
                 dropdownMenu.classList.remove('d-none');
             }
         });
+    }
+    else {
+        if (!dropdownMenu.classList.contains('show')) {
+            dropdownMenu.classList.add('d-none');
+            dropdownMenu.classList.remove('d-block');
+        }
+        else {
+            dropdownMenu.classList.add('d-block');
+            dropdownMenu.classList.remove('d-none');
+        }
     }
 }
 
@@ -79,7 +150,9 @@ function CarouselContinue() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+    /* Logonun etrafındaki kutulara tıklandığında herhangi bir 
+        etkileşim olmaması için aşağıdaki fonksiyonları kullandık. 
+    */
     let inclusive = document.querySelector('.inclusive');
     inclusive.addEventListener("click", function (event) {
         event.preventDefault();
@@ -211,6 +284,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 bottomIcon.classList.add('d-none');
                 rightIcon.classList.add('d-block');
                 rightIcon.classList.remove('d-none');
+            }
+        }
+    }
+
+
+
+    window.onclick = function (event) {
+        let dropdownMenu = document.querySelector('#navbarNav .dropdown-menu');
+        let scrollDropdownMenu = document.querySelector('#scrollNavbarNav .dropdown-menu');
+
+        if (!event.target.matches('#navbarNav .nav-item.dropdown')
+            && !event.target.matches('#scrollNavbarNav .nav-item.dropdown')) {
+
+            manageDropdownMenuVisibility(dropdownMenu);
+            manageDropdownMenuVisibility(scrollDropdownMenu);
+
+            function manageDropdownMenuVisibility(navbar) {
+                if (window.innerWidth < 991.9) {
+                    if (!navbar.classList.contains('show')) {
+                        let downIcon = navbar.parentElement.querySelector('.down-icon');
+                        let rightIcon = navbar.parentElement.querySelector('.right-icon');
+
+                        downIcon.classList.remove("d-block");
+                        downIcon.classList.add("d-none");
+                        rightIcon.classList.add("d-block");
+                        rightIcon.classList.remove("d-none");
+                    }
+                }
+
+                if (navbar.classList.contains('show')) {
+                    navbar.classList.add('d-block');
+                    navbar.classList.remove('d-none');
+                }
+                else {
+                    navbar.classList.remove('d-block');
+                    navbar.classList.add('d-none');
+                }
             }
         }
     }
@@ -362,7 +472,7 @@ function IncreaseButton(button) {
 
 
 /* GuestsAndRooms input'larında girilmeyen, boş bir değer varsa onun yerine "1" yazdırıyoruz. */
-function checkIfInputNumberEnter(){
+function checkIfInputNumberEnter() {
     let inputNumberElements = document.querySelectorAll('.input-number');
     inputNumberElements.forEach(element => {
         if (element.value == "") {
@@ -384,7 +494,7 @@ function handleGuestsCountIncrease(elementName, siblingElementName, totalGuests,
         inputElement.value = currentValue;
         valuesDisplayElement.innerHTML = `${totalGuests + 1} Guests, ${roomsValue} Rooms`;
 
-        if(totalGuests === 23){
+        if (totalGuests === 23) {
             executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
         }
     }
@@ -437,7 +547,7 @@ function executeDisableButtonActionsForGuests(elementName, siblingElementName, p
 
 
 /* Rooms bölümünde disable hâle getirilecek olan buton için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
-function executeDisableButtonActionsForRooms(){
+function executeDisableButtonActionsForRooms() {
     showOverlayRooms();
     cursorAuto("rooms");
     toggleCounterButton("rooms");
@@ -446,7 +556,7 @@ function executeDisableButtonActionsForRooms(){
 
 
 /* Rooms bölümünde etkinleştirilecek olan buton için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
-function executeEnableButtonActionsForRooms(){
+function executeEnableButtonActionsForRooms() {
     let elementName = "rooms";
     hideOverlayRooms(elementName);
     cursorPointer(elementName);
@@ -456,9 +566,9 @@ function executeEnableButtonActionsForRooms(){
 
 
 /* Guests bölümünde etkinleştirilecek olan butonlar için yapılması gereken bütün işlemleri, fonksiyonları içinde barından bir fonksiyon oluşturduk. */
-function executeEnableButtonActionsForGuests(elementName, siblingElementName, parentDiv){
+function executeEnableButtonActionsForGuests(elementName, siblingElementName, parentDiv) {
     hideOverlayGuests(elementName, siblingElementName, parentDiv);
-    
+
     cursorPointer(elementName);
     cursorPointer(siblingElementName);
 
@@ -520,7 +630,7 @@ function showOverlayRooms() {
 /* Rooms butonundaki tıklama olayını tekrar aktif hâle getirip tıklamayı engellemek 
     için oluşturulan div'in display özelliğini none yaptık. 
 */
-function hideOverlayRooms(elementName){
+function hideOverlayRooms(elementName) {
     let overlay = document.querySelector(`#${elementName} + div .overlay`);
     let clickButton = document.querySelector(`#${elementName} + div`);
 
@@ -537,7 +647,7 @@ function hideOverlayRooms(elementName){
 /* Guests butonlarındaki tıklama olayını tekrar aktif hâle getirip tıklamayı engellemek 
     için oluşturulan div'lerin display özellilerini none yaptık. 
 */
-function hideOverlayGuests(elementName, siblingElementName, parentDiv){
+function hideOverlayGuests(elementName, siblingElementName, parentDiv) {
     let overlay = parentDiv.querySelector(`#${elementName} + div .overlay`);
     let clickButton = document.querySelector(`#${elementName} + div`);
 
@@ -612,7 +722,7 @@ function checkEnterKey(event, input) {
         let currentIndex = Array.from(inputs).indexOf(input);
 
         if (currentIndex >= 0 && currentIndex < 2) {
-            if(inputs[currentIndex].value == ""){
+            if (inputs[currentIndex].value == "") {
                 inputs[currentIndex].value = 0;
             }
             inputs[currentIndex + 1].focus();
@@ -662,7 +772,7 @@ function updateGuestsInfo(elementName, siblingElementName, Guests, valuesDisplay
         if (siblingElementNameValue === 24) {
             inputElement.value = 0;
         }
-        else if (siblingElementNameValue === 23){
+        else if (siblingElementNameValue === 23) {
             inputElement.value = 1;
             executeDisableButtonActionsForGuests(elementName, siblingElementName, parentDiv);
         }
@@ -681,8 +791,3 @@ function updateGuestsInfo(elementName, siblingElementName, Guests, valuesDisplay
         valuesDisplayElement.innerHTML = `${Guests} Guests, ${roomsValue} Rooms`;
     }
 }
-
-
-
-/* Ekran boyutunun değiştiği her anda kontrol edilmesi gereken fonksiyonları, resize event'iyle tetikliyoruz. */
-window.addEventListener('resize', dropdownClick);
