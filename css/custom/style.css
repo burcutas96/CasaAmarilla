@@ -16,8 +16,9 @@ body {
 :root {
     --black: #000000;
     --space: #333333;
-    --scarlet: #595960;
+    --graphite: #222222b3;
     --forever: #707079;
+    --lead: #3a3534;
     --shades: #9f9f9f;
     --vintage: #999999;
     --halloween: #DFA974;
@@ -99,6 +100,14 @@ a {
     line-height: 6rem;
 }
 
+.section-text {
+    padding: 1.5rem 5rem;
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--graphite);
+    font-weight: 500;
+}
+
 
 /* Navbar */
 .mainNavbar {
@@ -107,11 +116,11 @@ a {
     background-color: transparent !important;
 }
 
-.navbar:not(.scroll-navbar){
+.navbar:not(.scroll-navbar) {
     z-index: 2;
 }
 
-.navbar.scroll-navbar{
+.navbar.scroll-navbar {
     z-index: 3;
 }
 
@@ -620,17 +629,77 @@ a {
 
 
 /* About Us */
-.about-text {
-    padding: 1.5rem 5rem;
-    font-size: 1.5rem;
-    text-align: center;
-    color: var(--scarlet);
-    font-weight: 500;
-}
-
 #aboutus .button-outline {
     color: var(--black);
 }
+
+/* Services */
+.service-item {
+    width: 170px;
+    height: 170px;
+}
+
+.service-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--white);
+    transition: all .3s ease;
+    box-shadow: 0 0 10px 5px rgba(26, 26, 26, 0.2);
+}
+
+.service-img,
+.service-img-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.service-img {
+    z-index: 2;
+}
+
+.service-img-hover {
+    opacity: 0;
+    z-index: 0;
+}
+
+.service-box:hover {
+    width: 170px;
+    height: 170px;
+}
+
+.service-box:hover .service-img {
+    opacity: 0;
+}
+
+.service-box:hover .service-img-hover {
+    opacity: 1;
+}
+
+.service-img:hover+.service-img-hover {
+    opacity: 1;
+}
+
+.service-box img {
+    width: 80px;
+    height: 80px;
+}
+
+.service-text {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--lead);
+    letter-spacing: .2rem;
+    font-family: 'Questrial', sans-serif;
+    transition: all .4s;
+}
+
 
 @media (max-width: 1399.9px) {
     #reservation .form-control {
@@ -656,7 +725,7 @@ a {
         animation: slideDown 0.4s ease-in-out;
     }
 
-    .dropdown-menu[data-bs-popper]{
+    .dropdown-menu[data-bs-popper] {
         margin: 0 !important;
     }
 
@@ -665,16 +734,17 @@ a {
             transform: translateY(30px);
             opacity: 0;
         }
+
         100% {
             transform: translateY(0px);
             opacity: 1;
         }
     }
 
-    .nav-link:focus, 
+    .nav-link:focus,
     .nav-link:hover,
-    .navbar-nav .nav-link.active, 
-    .navbar-nav .nav-link.show{
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link.show {
         color: var(--white) !important;
     }
 
@@ -763,8 +833,9 @@ a {
         color: var(--night) !important;
     }
 
-    .nav-login, .nav-signup {
-        display: inline-block  !important;
+    .nav-login,
+    .nav-signup {
+        display: inline-block !important;
     }
 
     .dropdown-toggle {
@@ -944,12 +1015,36 @@ a {
         line-height: 4.5rem;
     }
 
-    .about-text {
+    .section-text {
         padding: 1rem 3rem;
     }
 
     #aboutus img {
         width: 230px;
+    }
+
+    .service-item {
+        width: 160px;
+        height: 160px;
+    }
+
+    .service-box {
+        width: 140px;
+        height: 140px;
+    }
+
+    .service-box:hover {
+        width: 160px;
+        height: 160px;
+    }
+
+    .service-box img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .service-text {
+        font-size: 1.5rem;
     }
 }
 
@@ -1048,6 +1143,31 @@ a {
     #aboutus img {
         width: 350px;
     }
+
+    .service-item {
+        width: 150px;
+        height: 150px;
+    }
+
+    .service-box {
+        width: 130px;
+        height: 130px;
+    }
+
+    .service-box:hover {
+        width: 150px;
+        height: 150px;
+    }
+
+    .service-box img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-text {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
 }
 
 @media (max-width: 531.9px) {
@@ -1061,7 +1181,7 @@ a {
 
     .button-outline {
         padding: .2rem .1rem;
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     #reservation .form-control {
@@ -1204,7 +1324,6 @@ a {
     }
 
     .button-outline {
-        font-size: .9rem;
         letter-spacing: .1rem;
         border-bottom: 2px solid var(--halloween);
     }
@@ -1294,7 +1413,7 @@ a {
         letter-spacing: 0;
     }
 
-    .about-text {
+    .section-text {
         padding: 1rem 2rem;
     }
 }
@@ -1372,11 +1491,6 @@ a {
         font-size: 1rem;
     }
 
-    .button-outline {
-        font-size: .8rem;
-        font-weight: 700;
-    }
-
     .reservation-title {
         font-size: 2.5rem;
     }
@@ -1418,8 +1532,27 @@ a {
         line-height: 3.8rem;
     }
 
-    #aboutus .button-outline {
-        color: var(--black);
+    .opening .button-outline {
         font-size: .9rem;
+    }
+
+    .service-item {
+        width: 140px;
+        height: 140px;
+    }
+
+    .service-box {
+        width: 120px;
+        height: 120px;
+    }
+
+    .service-box:hover {
+        width: 140px;
+        height: 140px;
+    }
+
+    .service-box img {
+        width: 50px;
+        height: 50px;
     }
 }
