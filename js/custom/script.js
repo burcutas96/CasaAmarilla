@@ -150,16 +150,6 @@ function CarouselContinue() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    /* Logonun etrafındaki kutulara tıklandığında herhangi bir 
-        etkileşim olmaması için aşağıdaki fonksiyonları kullandık. 
-    */
-    let inclusive = document.querySelector('.inclusive');
-    inclusive.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    });
-
-
 
     /* Guests and Rooms altındaki formda, girilen değerlerin sayısal olup olmadığını 
     ve bu girilen değerlerin 0'dan büyük ve 99'dan küçük olma durumlarını kontrol ediyoruz. */

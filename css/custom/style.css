@@ -110,14 +110,11 @@ a {
 
 
 /* Navbar */
-.mainNavbar {
+.navbar:not(.scroll-navbar) {
+    z-index: 2;
     height: 77px;
     margin-top: 10px;
     background-color: transparent !important;
-}
-
-.navbar:not(.scroll-navbar) {
-    z-index: 2;
 }
 
 .navbar.scroll-navbar {
@@ -179,45 +176,8 @@ a {
     color: var(--);
 }
 
-.navbar .logo {
-    margin-top: -15px;
-    margin-left: -54px;
-}
-
-.inclusive {
-    position: absolute;
-    z-index: 3;
-    cursor: auto;
-    border-style: solid;
-    border-color: transparent;
-}
-
-.inclusive-left {
-    top: 0;
-    left: 0;
-    border-left-width: 51px;
-    height: 260px;
-}
-
-.inclusive-right {
-    top: 0;
-    right: 0;
-    border-right-width: 59px;
-    height: 260px;
-}
-
-.inclusive-top {
-    top: 0;
-    left: 0;
-    border-top-width: 100px;
-    width: 260px;
-}
-
-.inclusive-bottom {
-    bottom: 0;
-    left: 0;
-    border-bottom-width: 90px;
-    width: 260px;
+.navbar-brand{
+    display: inline-block;
 }
 
 .navbar-toggler {
@@ -759,24 +719,12 @@ a {
 }
 
 @media (max-width: 991.9px) {
+    .navbar:not(.scroll-navbar) {
+        margin-top: 5px;
+    }
+
     .nav-contact {
         display: none !important;
-    }
-
-    .navbar .container-md {
-        margin-top: -110px;
-    }
-
-    .scroll-navbar .container-md {
-        margin-top: -85px;
-    }
-
-    .navbar .logo {
-        margin-top: 0px;
-    }
-
-    .scroll-navbar .logo {
-        margin-top: -7px;
     }
 
     .nav-item.d-flex {
@@ -892,11 +840,13 @@ a {
 
 @media (max-width: 767.9px) {
     .mainNavbar {
-        padding: 0rem 2rem;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        margin-top: 0px;
     }
 
-    .navbar .logo {
-        margin-left: -45px;
+    .navbar .container-md{
+        padding: 0 2.5rem;
     }
 
     .search-close-switch {
@@ -1050,49 +1000,8 @@ a {
 
 
 @media (max-width: 619.9px) {
-    .scroll-navbar .container-md {
-        margin-top: -70px !important;
-    }
-
     .scroll-navbar {
         height: 90px;
-    }
-
-    .navbar-brand img {
-        width: 250px;
-        height: 250px;
-    }
-
-    .inclusive-left {
-        border-left-width: 48px;
-        height: 250px;
-    }
-
-    .inclusive-right {
-        border-right-width: 57px;
-        height: 250px;
-    }
-
-    .inclusive-top {
-        border-top-width: 95px;
-        width: 250px;
-    }
-
-    .inclusive-bottom {
-        border-bottom-width: 86px;
-        width: 250px;
-    }
-
-    .navbar .container-md {
-        margin-top: -110px;
-    }
-
-    .navbar .logo {
-        margin-left: -38px;
-    }
-
-    .scroll-navbar .logo {
-        margin-top: -23px;
     }
 
     .opening {
@@ -1106,6 +1015,7 @@ a {
 
     .opening-text {
         letter-spacing: 0.05rem;
+        margin-bottom: 1.2rem;
     }
 
     .button-outline {
@@ -1171,8 +1081,19 @@ a {
 }
 
 @media (max-width: 531.9px) {
+    .mainNavbar {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .navbar img{
+        width: 135px;
+        height: auto;
+    }
+
     .opening {
         width: 410px;
+        transform: translate(-50%, -30%);
     }
 
     .opening-title {
@@ -1262,48 +1183,21 @@ a {
 
 @media (max-width: 437.9px) {
     .mainNavbar {
-        padding: 0rem 1rem;
+        padding-left: 0rem !important;
+        padding-right: 0rem !important;
+    }
+
+    .navbar img{
+        width: 125px;
+        height: auto;
+    }
+
+    .navbar:not(.scroll-navbar){
+        margin-top: -5px;
     }
 
     .scroll-navbar {
         height: 80px;
-    }
-
-    .scroll-navbar .container-md {
-        margin-top: -58px !important;
-    }
-
-    .navbar .container-md {
-        margin-top: -100px;
-    }
-
-    .navbar .logo {
-        margin-left: -32px;
-    }
-
-    .navbar-brand img {
-        width: 220px;
-        height: 220px;
-    }
-
-    .inclusive-left {
-        border-left-width: 42px;
-        height: 220px;
-    }
-
-    .inclusive-right {
-        border-right-width: 51px;
-        height: 220px;
-    }
-
-    .inclusive-top {
-        border-top-width: 84px;
-        width: 220px;
-    }
-
-    .inclusive-bottom {
-        border-bottom-width: 75px;
-        width: 220px;
     }
 
     .carousel-indicators [data-bs-target] {
@@ -1317,10 +1211,12 @@ a {
 
     .opening-title {
         font-size: 2.8rem;
+        margin-bottom: .7rem;
     }
 
     .opening-text {
         font-size: 1.15rem;
+        margin-bottom: .9rem;
     }
 
     .button-outline {
@@ -1435,56 +1331,27 @@ a {
 
 @media (max-width: 378.9px) {
     .offcanvas {
-        width: 250px !important;
+        width: 270px !important;
     }
 
-    .mainNavbar {
-        padding: 0rem .7rem;
+    .navbar-toggler .bi-list {
+        font-size: 2.9rem;
+    }
+
+    .navbar:not(.scroll-navbar) .container-md {
+        padding: 0 1.8rem;
+    }
+
+    .navbar:not(.scroll-navbar) {
+        margin-top: -10px;
     }
 
     .scroll-navbar {
         height: 70px;
     }
 
-    .scroll-navbar .container-md {
-        margin-top: -52px !important;
-    }
-
-    .navbar .container-md {
-        margin-top: -93px;
-    }
-
-    .navbar .logo {
-        margin-left: -28px;
-    }
-
-    .navbar-brand img {
-        width: 200px;
-        height: 200px;
-    }
-
-    .inclusive-left {
-        border-left-width: 38px;
-        height: 200px;
-    }
-
-    .inclusive-right {
-        border-right-width: 47px;
-        height: 200px;
-    }
-
-    .inclusive-top {
-        border-top-width: 75px;
-        width: 200px;
-    }
-
-    .inclusive-bottom {
-        border-bottom-width: 68px;
-        width: 200px;
-    }
-
     .opening-title {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
     }
 
     .opening-text {
@@ -1554,5 +1421,34 @@ a {
     .service-box img {
         width: 50px;
         height: 50px;
+    }
+}
+
+@media (max-width: 320px) {
+    .offcanvas {
+        width: 255px !important;
+    }
+
+    .navbar img{
+        width: 115px;
+        height: auto;
+    }
+
+    .navbar-toggler .bi-list {
+        font-size: 2.6rem;
+    }
+
+    .opening {
+        width: 270px;
+    }
+
+    .opening-title {
+        font-size: 2.3rem;
+        margin-bottom: .5rem;
+    }
+
+    .opening-text {
+        font-size: 1rem;
+        margin-bottom: .7rem;
     }
 }
